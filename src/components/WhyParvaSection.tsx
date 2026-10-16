@@ -1,5 +1,6 @@
 import React from 'react';
 import { Target, Users, Landmark, Contact, Sparkles, Network } from 'lucide-react';
+import { RotatingBackgroundLogo } from './RotatingBackgroundLogo';
 
 export const WhyParvaSection: React.FC = () => {
   const features = [
@@ -48,9 +49,14 @@ export const WhyParvaSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#101A35] relative">
+    <section className="py-24 bg-[#101A35] relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(214,173,85,0.06),transparent)] pointer-events-none" />
+
+      {/* Subtle Slow Rotating Logo in Background */}
+      <div className="absolute -right-32 -bottom-32 pointer-events-none z-0">
+        <RotatingBackgroundLogo size={520} opacity={0.06} reverse />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">

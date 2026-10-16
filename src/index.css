@@ -30,6 +30,55 @@ body {
   background: #D6AD55;
 }
 
+/* Section Scroll Offsets for Sticky Navbar */
+section[id], div[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Slow Continuous Spin Animations for Background Logo */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(1.05);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 70s linear infinite;
+  will-change: transform;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 90s linear infinite;
+  will-change: transform;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 8s ease-in-out infinite;
+}
+
 /* Gold Gradient Utilities */
 .text-gold-gradient {
   background: linear-gradient(135deg, #FDF4D8 0%, #D6AD55 50%, #B88E38 100%);

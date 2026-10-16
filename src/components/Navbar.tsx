@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, Phone, Sparkles } from 'lucide-react';
+import { Menu, X, Calendar, Phone, Sparkles, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   onBookClick: () => void;
@@ -8,35 +8,70 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      // Background toggle on scroll
+      if (window.scrollY > 25) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
+
+      // Active section detection (Scrollspy)
+      const sections = ['home', 'about', 'schedule', 'benefits', 'packages', 'faqs', 'contact'];
+      const scrollPosition = window.scrollY + 120;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
+
+    handleScroll(); // Trigger immediately on mount
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About PARVA', href: '#about' },
-    { name: 'Event Schedule', href: '#schedule' },
-    { name: 'Exhibitor Benefits', href: '#benefits' },
-    { name: 'Packages', href: '#packages' },
-    { name: 'FAQs', href: '#faqs' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', id: 'home' },
+    { name: 'About PARVA', href: '#about', id: 'about' },
+    { name: 'Event Schedule', href: '#schedule', id: 'schedule' },
+    { name: 'Exhibitor Benefits', href: '#benefits', id: 'benefits' },
+    { name: 'Packages', href: '#packages', id: 'packages' },
+    { name: 'FAQs', href: '#faqs', id: 'faqs' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    const target = document.querySelector(href);
+    const targetId = href.replace('#', '');
+    const target = document.getElementById(targetId);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 80;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -45,148 +80,200 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#101A35]/95 backdrop-blur-md shadow-lg border-b border-[#D6AD55]/20 py-3.5'
-            : 'bg-gradient-to-b from-[#0A1022]/90 via-[#0A1022]/40 to-transparent py-5'
+            ? 'bg-[#101A35]/95 backdrop-blur-md shadow-lg border-b border-[#D6AD55]/25 py-3'
+            : 'bg-gradient-to-b from-[#0A1022]/95 via-[#0A1022]/70 to-transparent py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo / Wordmark */}
+            {/* Logo & Brand Wordmark */}
             <a
               href="#home"
               onClick={(e) => handleLinkClick(e, '#home')}
-              className="flex items-center gap-3 group focus:outline-none"
+              className="flex items-center gap-3 group focus:outline-none shrink-0"
             >
-              <div className="w-10 h-10 rounded-lg bg-white/95 border border-[#D6AD55]/40 flex items-center justify-center shadow-sm group-hover:border-[#D6AD55] transition-colors p-1 overflow-hidden">
-                <img src="/logo.png" alt="PARVA Logo" className="w-full h-full object-contain" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border-2 border-[#D6AD55]/60 flex items-center justify-center shadow-gold-sm group-hover:border-[#D6AD55] group-hover:shadow-gold-glow transition-all p-1 overflow-hidden">
+                <img
+                  src="/logo.png"
+                  alt="PARVA Logo Shield"
+                  className="w-full h-full object-contain"
+                />
               </div>
+
               <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-serif text-2xl font-bold tracking-wider text-white">
+                <div className="flex items-center gap-2">
+                  <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white group-hover:text-slate-100 transition-colors">
                     PARVA
                   </span>
-                  <span className="text-xs px-1.5 py-0.5 rounded font-semibold bg-[#D6AD55]/15 text-[#D6AD55] border border-[#D6AD55]/30">
+                  <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold bg-[#D6AD55]/20 text-[#D6AD55] border border-[#D6AD55]/40 tracking-wider">
                     2027
                   </span>
                 </div>
-                <span className="text-[11px] font-medium tracking-wider uppercase text-slate-300">
+                <span className="text-[10px] sm:text-[11px] font-medium tracking-wider uppercase text-slate-300 truncate max-w-[190px] sm:max-w-none">
                   Bengaluru North Educational Expo
                 </span>
               </div>
             </a>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-7">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="text-sm font-medium text-slate-200 hover:text-[#D6AD55] transition-colors tracking-wide relative group py-1"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D6AD55] transition-all duration-200 group-hover:w-full" />
-                </a>
-              ))}
+            {/* Desktop Navigation Links (with Scrollspy Active Highlights) */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className={`text-xs xl:text-sm font-medium tracking-wide relative group py-1.5 transition-colors duration-200 ${
+                      isActive
+                        ? 'text-[#D6AD55] font-semibold'
+                        : 'text-slate-200 hover:text-[#D6AD55]'
+                    }`}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] bg-[#D6AD55] transition-all duration-300 ${
+                        isActive ? 'w-full shadow-gold-sm' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </a>
+                );
+              })}
             </nav>
 
-            {/* Right CTAs */}
-            <div className="hidden sm:flex items-center gap-4">
+            {/* Right CTAs (Desktop & Mobile) */}
+            <div className="flex items-center gap-3">
+              {/* Phone call shortcut (Desktop XL) */}
               <a
                 href="tel:9632645625"
-                className="hidden xl:flex items-center gap-2 text-xs font-medium text-slate-300 hover:text-white transition-colors"
+                className="hidden xl:flex items-center gap-2 text-xs font-medium text-slate-300 hover:text-white transition-colors py-1.5 px-2 rounded-lg hover:bg-white/5"
               >
                 <Phone className="w-3.5 h-3.5 text-[#D6AD55]" />
-                <span>+91 96326 45625</span>
+                <span className="font-mono">+91 96326 45625</span>
               </a>
 
+              {/* Mobile Quick Book CTA Button (Visible on screens < 640px) */}
               <button
                 onClick={onBookClick}
-                className="relative inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-md shadow-md hover:shadow-gold-glow hover:brightness-105 active:scale-95 transition-all duration-200 font-sans"
+                className="sm:hidden inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-md shadow-sm active:scale-95 transition-all"
+              >
+                Book Stall
+              </button>
+
+              {/* Desktop CTA Button */}
+              <button
+                onClick={onBookClick}
+                className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-lg shadow-gold-sm hover:shadow-gold-glow hover:brightness-105 active:scale-95 transition-all duration-200"
               >
                 <Sparkles className="w-3.5 h-3.5 mr-1.5 text-[#101A35]" />
                 Book Your Stall
               </button>
-            </div>
 
-            {/* Mobile Hamburger Button */}
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
-              aria-label="Toggle navigation menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-[#D6AD55]" />
-              ) : (
-                <Menu className="w-6 h-6 text-slate-200" />
-              )}
-            </button>
+              {/* Mobile Hamburger Toggle Button */}
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
+                aria-label="Toggle navigation menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6 text-[#D6AD55]" />
+                ) : (
+                  <Menu className="w-6 h-6 text-slate-200" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu (z-[60] to strictly float above fixed header) */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-[60] lg:hidden">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fadeIn"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* Drawer Content */}
-          <div className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-[#101A35] border-l border-[#D6AD55]/30 p-6 flex flex-col justify-between shadow-2xl z-50">
+          {/* Drawer Panel */}
+          <div className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-[#101A35] border-l-2 border-[#D6AD55]/40 p-6 flex flex-col justify-between shadow-2xl z-[70] overflow-y-auto">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-white/10">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded bg-white/95 border border-[#D6AD55] flex items-center justify-center p-0.5 overflow-hidden">
-                    <img src="/logo.png" alt="PARVA Logo" className="w-full h-full object-contain" />
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between pb-5 border-b border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-white border border-[#D6AD55] flex items-center justify-center p-1 shadow-sm">
+                    <img
+                      src="/logo.png"
+                      alt="PARVA Logo"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
-                    <span className="font-serif text-lg font-bold text-white tracking-wide">
+                    <span className="font-serif text-lg font-bold text-white tracking-wide block">
                       PARVA 2027
                     </span>
-                    <span className="block text-[10px] text-slate-300">
-                      Bengaluru North Educational Expo
+                    <span className="block text-[10px] text-slate-400">
+                      Bengaluru North Expo
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1 rounded text-slate-400 hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                  aria-label="Close menu"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="py-6 flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-base font-medium text-slate-200 hover:text-[#D6AD55] transition-colors py-1.5 border-b border-white/5"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
+              {/* Navigation Links */}
+              <nav className="py-6 flex flex-col space-y-1">
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.id;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className={`flex items-center justify-between px-3 py-3 rounded-xl text-sm font-medium transition-all ${
+                        isActive
+                          ? 'bg-[#182547] text-[#D6AD55] border-l-4 border-[#D6AD55] font-semibold'
+                          : 'text-slate-200 hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      <span>{link.name}</span>
+                      <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#D6AD55]' : 'text-slate-500'}`} />
+                    </a>
+                  );
+                })}
+              </nav>
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex flex-col gap-3">
+            {/* Drawer Bottom CTAs & Contacts */}
+            <div className="pt-6 border-t border-white/10 space-y-4">
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Calendar className="w-4 h-4 text-[#D6AD55]" />
                 <span>9–10 January 2027 · MEI Layout</span>
               </div>
+
+              <a
+                href="tel:9632645625"
+                className="flex items-center gap-2 text-xs text-[#D6AD55] font-mono hover:underline"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>+91 96326 45625 (Organiser Desk)</span>
+              </a>
+
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   onBookClick();
                 }}
-                className="w-full py-3 text-xs font-semibold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-md shadow-md text-center active:scale-95 transition-all"
+                className="w-full py-3.5 text-xs font-bold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-xl shadow-gold-sm text-center active:scale-95 transition-all flex items-center justify-center gap-2"
               >
-                Book Your Stall
+                <Sparkles className="w-4 h-4" />
+                <span>Book Your Stall</span>
               </button>
             </div>
           </div>
