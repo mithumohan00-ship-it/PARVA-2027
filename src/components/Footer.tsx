@@ -36,8 +36,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
           {/* Column 1: Brand & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#182547] border border-[#D6AD55] flex items-center justify-center">
-                <span className="font-serif font-bold text-xl text-[#D6AD55]">P</span>
+              <div className="w-10 h-10 rounded-lg bg-white/95 border border-[#D6AD55] flex items-center justify-center p-1 overflow-hidden">
+                <img src="/logo.png" alt="PARVA Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <span className="font-serif text-2xl font-bold text-white tracking-wider">

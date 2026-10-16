@@ -66,7 +66,7 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Four Target / Expected Statistics Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
@@ -89,6 +89,53 @@ export const AboutSection: React.FC = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Authentic Student & Parent Feature Card */}
+        <div className="bg-[#101A35] border border-[#D6AD55]/40 rounded-3xl overflow-hidden shadow-2xl mb-8 grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-5 h-72 sm:h-96 lg:h-full min-h-[340px] relative overflow-hidden bg-[#182547]">
+            <img
+              src="/student-primary-doodles.jpg"
+              alt="Aspiring young student with big educational dreams"
+              className="w-full h-full object-cover object-top filter contrast-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101A35] via-transparent to-transparent lg:hidden" />
+          </div>
+
+          <div className="lg:col-span-7 p-8 sm:p-12 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] text-[#D6AD55] text-xs font-semibold uppercase tracking-wider border border-[#D6AD55]/30">
+              <span>Bengaluru North Admission Corridor</span>
+            </div>
+
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-snug">
+              Position Your Campus at the Very Heart of Admission Season
+            </h3>
+
+            <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+              Every January, thousands of parents across Bagalagunte, Jalahalli, Hesaraghatta Road,
+              Yelahanka, and Dasarahalli actively evaluate school and PU college admissions.
+              PARVA unifies this decision-making corridor on a single ground.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs sm:text-sm text-slate-200">
+              <div className="flex items-start gap-2.5">
+                <div className="w-2 h-2 rounded-full bg-[#D6AD55] mt-1.5 shrink-0" />
+                <span>Meaningful face-to-face counselor conversations</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <div className="w-2 h-2 rounded-full bg-[#D6AD55] mt-1.5 shrink-0" />
+                <span>Direct engagement with admission-seeking parents</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <div className="w-2 h-2 rounded-full bg-[#D6AD55] mt-1.5 shrink-0" />
+                <span>Spot registration & campus tour bookings</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <div className="w-2 h-2 rounded-full bg-[#D6AD55] mt-1.5 shrink-0" />
+                <span>Zero distraction from test-prep companies</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Clear Notice clarifying projected targets */}

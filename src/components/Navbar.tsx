@@ -57,8 +57,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
               onClick={(e) => handleLinkClick(e, '#home')}
               className="flex items-center gap-3 group focus:outline-none"
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#182547] to-[#101A35] border border-[#D6AD55]/40 flex items-center justify-center shadow-sm group-hover:border-[#D6AD55] transition-colors">
-                <span className="font-serif font-bold text-xl text-[#D6AD55]">P</span>
+              <div className="w-10 h-10 rounded-lg bg-white/95 border border-[#D6AD55]/40 flex items-center justify-center shadow-sm group-hover:border-[#D6AD55] transition-colors p-1 overflow-hidden">
+                <img src="/logo.png" alt="PARVA Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
@@ -140,8 +140,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-white/10">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded bg-[#182547] border border-[#D6AD55] flex items-center justify-center">
-                    <span className="font-serif font-bold text-sm text-[#D6AD55]">P</span>
+                  <div className="w-8 h-8 rounded bg-white/95 border border-[#D6AD55] flex items-center justify-center p-0.5 overflow-hidden">
+                    <img src="/logo.png" alt="PARVA Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <span className="font-serif text-lg font-bold text-white tracking-wide">
