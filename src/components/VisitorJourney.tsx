@@ -36,17 +36,17 @@ export const VisitorJourney: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#101A35]/85 relative backdrop-blur-[1px]">
+    <section className="py-24 bg-[#031F51]/85 relative backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
             <Route className="w-3.5 h-3.5" />
             <span>Interactive Passport System</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Every Visit{' '}
-            <span className="text-gold-gradient font-normal">Counts.</span>
+            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">Counts.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
@@ -58,7 +58,7 @@ export const VisitorJourney: React.FC = () => {
         {/* 5-Step Flow */}
         <div className="relative">
           {/* Connecting line on desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-[2px] bg-gradient-to-r from-[#D6AD55]/10 via-[#D6AD55]/40 to-[#D6AD55]/10 -translate-y-12 z-0" />
+          <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-[2px] bg-gradient-to-r from-[#1491C2]/10 via-[#1491C2]/50 to-[#1491C2]/10 -translate-y-12 z-0" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
             {steps.map((item, idx) => {
@@ -66,15 +66,15 @@ export const VisitorJourney: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="bg-[#182547] border border-white/10 hover:border-[#D6AD55] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group flex flex-col justify-between text-center relative"
+                  className="bg-[#121481]/90 border border-[#245DA9]/40 hover:border-[#1491C2] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-cyan-glow group flex flex-col justify-between text-center relative"
                 >
                   <div>
                     {/* Step Badge */}
-                    <div className="w-14 h-14 rounded-2xl bg-[#101A35] border-2 border-[#D6AD55]/40 group-hover:border-[#D6AD55] flex items-center justify-center mx-auto mb-5 shadow-sm group-hover:scale-105 transition-all">
-                      <Icon className="w-7 h-7 text-[#D6AD55]" />
+                    <div className="w-14 h-14 rounded-2xl bg-[#031F51] border-2 border-[#1491C2]/40 group-hover:border-[#1491C2] flex items-center justify-center mx-auto mb-5 shadow-sm group-hover:scale-105 transition-all">
+                      <Icon className="w-7 h-7 text-[#1491C2]" />
                     </div>
 
-                    <div className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#D6AD55] bg-[#101A35] border border-[#D6AD55]/20 mb-2">
+                    <div className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#1491C2] bg-[#031F51] border border-[#1491C2]/30 mb-2">
                       STEP {item.step}
                     </div>
 
@@ -87,7 +87,7 @@ export const VisitorJourney: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-center gap-1.5 text-[11px] text-[#D6AD55]">
+                  <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-center gap-1.5 text-[11px] text-[#1491C2]">
                     <Check className="w-3.5 h-3.5" />
                     <span>Engaged Footfall</span>
                   </div>
@@ -98,7 +98,7 @@ export const VisitorJourney: React.FC = () => {
         </div>
 
         {/* Supporting Message Callout */}
-        <div className="mt-12 bg-gradient-to-r from-[#182547] via-[#101A35] to-[#182547] border border-[#D6AD55]/30 rounded-2xl p-6 sm:p-8 text-center max-w-4xl mx-auto shadow-md">
+        <div className="mt-12 bg-gradient-to-r from-[#121481] via-[#031F51] to-[#121481] border border-[#245DA9]/50 rounded-2xl p-6 sm:p-8 text-center max-w-4xl mx-auto shadow-md">
           <p className="font-serif italic text-base sm:text-lg text-slate-200 mb-2">
             &ldquo;The visitor engagement programme is designed to encourage families to explore
             participating institutions and spend more time discovering educational opportunities.&rdquo;

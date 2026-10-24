@@ -54,20 +54,20 @@ export const ExhibitorBenefits: React.FC<ExhibitorBenefitsProps> = ({
   ];
 
   return (
-    <section id="benefits" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
+    <section id="benefits" className="py-24 bg-[#031F51]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Background glow */}
-      <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#D6AD55]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#1491C2]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Exhibitor Advantages</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             More Than a Stall.{' '}
-            <span className="text-gold-gradient font-normal">Leads, Stage & Visibility.</span>
+            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">Leads, Stage & Visibility.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
@@ -82,14 +82,14 @@ export const ExhibitorBenefits: React.FC<ExhibitorBenefitsProps> = ({
             return (
               <div
                 key={idx}
-                className="bg-[#101A35] border border-[#D6AD55]/30 hover:border-[#D6AD55] rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-sm group flex flex-col justify-between"
+                className="bg-[#121481]/90 border border-[#245DA9]/40 hover:border-[#1491C2] rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-cyan-glow group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center mb-6 group-hover:bg-[#101A35] group-hover:scale-105 transition-all">
-                    <Icon className="w-7 h-7 text-[#D6AD55]" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center mb-6 group-hover:bg-[#031F51] group-hover:scale-105 transition-all">
+                    <Icon className="w-7 h-7 text-[#1491C2]" />
                   </div>
 
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#D6AD55] block mb-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#1491C2] block mb-1">
                     {benefit.subtitle}
                   </span>
 
@@ -102,7 +102,7 @@ export const ExhibitorBenefits: React.FC<ExhibitorBenefitsProps> = ({
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-xs text-[#D6AD55]">
+                <div className="mt-6 pt-4 border-t border-white/5 flex items-center text-xs text-[#1491C2]">
                   <span>Included with Eligible Packages</span>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export const ExhibitorBenefits: React.FC<ExhibitorBenefitsProps> = ({
         <div className="text-center">
           <button
             onClick={onExplorePackages}
-            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-lg shadow-gold-glow hover:brightness-105 active:scale-95 transition-all duration-200"
+            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#1491C2] via-[#245DA9] to-[#132CA9] rounded-lg shadow-cyan-glow hover:brightness-110 active:scale-95 transition-all duration-200"
           >
             <span>Explore Exhibitor Packages</span>
             <ArrowRight className="w-4 h-4" />

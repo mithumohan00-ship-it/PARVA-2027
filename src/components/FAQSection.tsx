@@ -63,17 +63,17 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="py-24 bg-[#101A35]/85 relative backdrop-blur-[1px]">
+    <section id="faqs" className="py-24 bg-[#031F51]/85 relative backdrop-blur-[1px]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Frequently Asked Questions</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Everything You Need to{' '}
-            <span className="text-gold-gradient font-normal">Know.</span>
+            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">Know.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-xl mx-auto">
@@ -88,7 +88,7 @@ export const FAQSection: React.FC = () => {
             return (
               <div
                 key={index}
-                className="bg-[#182547] border border-white/10 hover:border-[#D6AD55]/50 rounded-2xl overflow-hidden transition-colors"
+                className="bg-[#121481]/90 border border-[#245DA9]/40 hover:border-[#1491C2]/60 rounded-2xl overflow-hidden transition-colors"
               >
                 <button
                   type="button"
@@ -96,14 +96,14 @@ export const FAQSection: React.FC = () => {
                   className="w-full py-5 px-6 sm:px-8 text-left flex items-center justify-between gap-4 focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-serif text-base sm:text-lg font-bold text-white group-hover:text-[#D6AD55] transition-colors">
+                  <span className="font-serif text-base sm:text-lg font-bold text-white hover:text-[#1491C2] transition-colors">
                     {faq.question}
                   </span>
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                       isOpen
-                        ? 'bg-[#D6AD55] text-[#101A35]'
-                        : 'bg-[#101A35] text-slate-300'
+                        ? 'bg-[#1491C2] text-white'
+                        : 'bg-[#031F51] text-slate-300'
                     }`}
                   >
                     {isOpen ? (

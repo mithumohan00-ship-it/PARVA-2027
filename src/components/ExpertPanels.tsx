@@ -78,16 +78,16 @@ export const ExpertPanels: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#101A35]/85 relative backdrop-blur-[1px]">
+    <section className="py-24 bg-[#031F51]/85 relative backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
             <span>Thought Leadership</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Conversations That{' '}
-            <span className="text-gold-gradient font-normal">Shape Education.</span>
+            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">Shape Education.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
@@ -103,27 +103,27 @@ export const ExpertPanels: React.FC = () => {
             return (
               <div
                 key={panel.number}
-                className="bg-[#182547] border border-white/10 hover:border-[#D6AD55]/60 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group flex flex-col justify-between"
+                className="bg-[#121481]/90 border border-[#245DA9]/40 hover:border-[#1491C2]/70 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-cyan-glow group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <span className="w-9 h-9 rounded-full bg-[#101A35] border border-[#D6AD55]/50 text-[#D6AD55] font-serif font-bold text-sm flex items-center justify-center">
+                    <span className="w-9 h-9 rounded-full bg-[#031F51] border border-[#1491C2]/50 text-[#1491C2] font-serif font-bold text-sm flex items-center justify-center">
                       #{panel.number}
                     </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#101A35]/80 text-[#D6AD55]">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#031F51]/80 text-[#1491C2]">
                       {panel.day}
                     </span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-xl bg-[#101A35] border border-[#D6AD55]/30 flex items-center justify-center mb-4 group-hover:border-[#D6AD55] transition-colors">
-                    <Icon className="w-6 h-6 text-[#D6AD55]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center mb-4 group-hover:border-[#1491C2] transition-colors">
+                    <Icon className="w-6 h-6 text-[#1491C2]" />
                   </div>
 
-                  <h3 className="font-serif text-xl font-bold text-white mb-1 group-hover:text-[#D6AD55] transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-white mb-1 group-hover:text-[#1491C2] transition-colors">
                     {panel.title}
                   </h3>
 
-                  <p className="text-xs font-semibold text-[#D6AD55] tracking-wide mb-3">
+                  <p className="text-xs font-semibold text-[#1491C2] tracking-wide mb-3">
                     {panel.subtitle}
                   </p>
 
@@ -141,9 +141,9 @@ export const ExpertPanels: React.FC = () => {
           })}
 
           {/* Platinum Sponsor Opportunity Card */}
-          <div className="bg-gradient-to-br from-[#182547] to-[#101A35] border-2 border-[#D6AD55] rounded-2xl p-7 flex flex-col justify-between shadow-gold-sm md:col-span-2 lg:col-span-2">
+          <div className="bg-gradient-to-br from-[#121481] to-[#031F51] border-2 border-[#1491C2] rounded-2xl p-7 flex flex-col justify-between shadow-cyan-glow md:col-span-2 lg:col-span-2">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D6AD55]/20 text-[#D6AD55] text-xs font-bold uppercase tracking-wider mb-4 border border-[#D6AD55]/40">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1491C2]/20 text-[#1491C2] text-xs font-bold uppercase tracking-wider mb-4 border border-[#1491C2]/40">
                 <Crown className="w-3.5 h-3.5" />
                 <span>Exhibitor Advantage</span>
               </div>
@@ -157,7 +157,7 @@ export const ExpertPanels: React.FC = () => {
                 hundreds of attentive parents.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs text-[#D6AD55] pt-4 border-t border-white/10 font-medium">
+            <div className="flex items-center justify-between text-xs text-[#1491C2] pt-4 border-t border-white/10 font-medium">
               <span>Limited to Platinum Exhibitor Packages</span>
               <a
                 href="#packages"

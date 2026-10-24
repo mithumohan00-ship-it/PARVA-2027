@@ -70,15 +70,15 @@ export const EventCountdown: React.FC = () => {
 
   return (
     <div className="relative z-20 -mt-8 sm:-mt-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-[#101A35] border border-[#D6AD55]/40 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-md relative overflow-hidden">
-        {/* Subtle decorative gold corner glow */}
-        <div className="absolute top-0 right-0 w-48 h-48 bg-[#D6AD55]/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="bg-[#031F51] border border-[#245DA9]/50 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-md relative overflow-hidden">
+        {/* Subtle decorative cyan corner glow */}
+        <div className="absolute top-0 right-0 w-48 h-48 bg-[#1491C2]/15 rounded-full blur-2xl pointer-events-none" />
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-6 border-b border-white/10 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center">
-              <Clock className="w-5 h-5 text-[#D6AD55]" />
+            <div className="w-10 h-10 rounded-lg bg-[#121481] border border-[#245DA9]/50 flex items-center justify-center">
+              <Clock className="w-5 h-5 text-[#1491C2]" />
             </div>
             <div>
               <h2 className="font-serif text-lg sm:text-xl font-bold tracking-wide text-white uppercase">
@@ -90,8 +90,8 @@ export const EventCountdown: React.FC = () => {
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55]">
-            <span className="w-2 h-2 rounded-full bg-[#D6AD55] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider bg-[#121481] border border-[#1491C2]/40 text-[#1491C2]">
+            <span className="w-2 h-2 rounded-full bg-[#1491C2] animate-ping" />
             <span>2nd Edition Launch</span>
           </div>
         </div>
@@ -100,8 +100,8 @@ export const EventCountdown: React.FC = () => {
         {timeLeft.status === 'upcoming' && (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 pt-6">
             {/* Days */}
-            <div className="bg-[#182547] border border-[#D6AD55]/30 rounded-xl p-4 text-center group hover:border-[#D6AD55] transition-all">
-              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#D6AD55] tracking-tight">
+            <div className="bg-[#121481] border border-[#245DA9]/40 rounded-xl p-4 text-center group hover:border-[#1491C2] transition-all">
+              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#1491C2] tracking-tight">
                 {String(timeLeft.days).padStart(2, '0')}
               </div>
               <div className="text-xs uppercase font-medium tracking-widest text-slate-400 mt-1">
@@ -110,8 +110,8 @@ export const EventCountdown: React.FC = () => {
             </div>
 
             {/* Hours */}
-            <div className="bg-[#182547] border border-[#D6AD55]/30 rounded-xl p-4 text-center group hover:border-[#D6AD55] transition-all">
-              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#D6AD55] tracking-tight">
+            <div className="bg-[#121481] border border-[#245DA9]/40 rounded-xl p-4 text-center group hover:border-[#1491C2] transition-all">
+              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#1491C2] tracking-tight">
                 {String(timeLeft.hours).padStart(2, '0')}
               </div>
               <div className="text-xs uppercase font-medium tracking-widest text-slate-400 mt-1">
@@ -120,8 +120,8 @@ export const EventCountdown: React.FC = () => {
             </div>
 
             {/* Minutes */}
-            <div className="bg-[#182547] border border-[#D6AD55]/30 rounded-xl p-4 text-center group hover:border-[#D6AD55] transition-all">
-              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#D6AD55] tracking-tight">
+            <div className="bg-[#121481] border border-[#245DA9]/40 rounded-xl p-4 text-center group hover:border-[#1491C2] transition-all">
+              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#1491C2] tracking-tight">
                 {String(timeLeft.minutes).padStart(2, '0')}
               </div>
               <div className="text-xs uppercase font-medium tracking-widest text-slate-400 mt-1">
@@ -130,8 +130,8 @@ export const EventCountdown: React.FC = () => {
             </div>
 
             {/* Seconds */}
-            <div className="bg-[#182547] border border-[#D6AD55]/30 rounded-xl p-4 text-center group hover:border-[#D6AD55] transition-all">
-              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#D6AD55] tracking-tight">
+            <div className="bg-[#121481] border border-[#245DA9]/40 rounded-xl p-4 text-center group hover:border-[#1491C2] transition-all">
+              <div className="font-serif text-4xl sm:text-5xl font-bold text-[#1491C2] tracking-tight">
                 {String(timeLeft.seconds).padStart(2, '0')}
               </div>
               <div className="text-xs uppercase font-medium tracking-widest text-slate-400 mt-1">
@@ -142,9 +142,9 @@ export const EventCountdown: React.FC = () => {
         )}
 
         {timeLeft.status === 'live' && (
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-gradient-to-r from-[#182547] to-[#101A35] border border-[#D6AD55]">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-gradient-to-r from-[#121481] to-[#031F51] border border-[#1491C2]">
             <div className="flex items-center gap-3">
-              <Radio className="w-8 h-8 text-[#D6AD55] animate-pulse" />
+              <Radio className="w-8 h-8 text-[#1491C2] animate-pulse" />
               <div>
                 <h3 className="font-serif text-xl font-bold text-white">
                   PARVA 2027 IS LIVE NOW!
@@ -156,7 +156,7 @@ export const EventCountdown: React.FC = () => {
             </div>
             <a
               href="#location"
-              className="px-5 py-2.5 rounded-lg bg-[#D6AD55] text-[#101A35] font-semibold text-xs uppercase tracking-wider hover:brightness-110 transition-all shrink-0"
+              className="px-5 py-2.5 rounded-lg bg-[#1491C2] text-white font-semibold text-xs uppercase tracking-wider hover:bg-[#245DA9] transition-all shrink-0"
             >
               Get Venue Directions
             </a>
@@ -164,8 +164,8 @@ export const EventCountdown: React.FC = () => {
         )}
 
         {timeLeft.status === 'completed' && (
-          <div className="pt-6 flex items-center justify-center gap-3 p-6 rounded-xl bg-[#182547] border border-white/20 text-center">
-            <CheckCircle2 className="w-6 h-6 text-[#D6AD55]" />
+          <div className="pt-6 flex items-center justify-center gap-3 p-6 rounded-xl bg-[#121481] border border-white/20 text-center">
+            <CheckCircle2 className="w-6 h-6 text-[#1491C2]" />
             <div>
               <h3 className="font-serif text-lg font-bold text-white">
                 PARVA 2027 Has Concluded
@@ -180,7 +180,7 @@ export const EventCountdown: React.FC = () => {
         {/* Bottom Banner */}
         <div className="mt-5 pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
           <span>Early-Bird Booking Advantage Ends: 15 November 2026</span>
-          <span className="text-[#D6AD55]">Stall Allotment on 20 December 2026</span>
+          <span className="text-[#1491C2] font-semibold">Stall Allotment on 20 December 2026</span>
         </div>
       </div>
     </div>

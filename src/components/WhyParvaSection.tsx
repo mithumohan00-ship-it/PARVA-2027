@@ -48,19 +48,19 @@ export const WhyParvaSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#101A35]/85 relative overflow-hidden backdrop-blur-[1px]">
+    <section className="py-24 bg-[#031F51]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Background ambient lighting */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(214,173,85,0.06),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(20,145,194,0.08),transparent)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
             <span>Why Exhibit at PARVA</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Your Next Admission Opportunity{' '}
-            <span className="text-gold-gradient font-normal">Starts Here.</span>
+            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">Starts Here.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
@@ -76,21 +76,21 @@ export const WhyParvaSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-[#182547]/80 backdrop-blur-sm border border-white/10 hover:border-[#D6AD55]/60 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group relative overflow-hidden"
+                className="bg-[#121481]/90 backdrop-blur-sm border border-[#245DA9]/40 hover:border-[#1491C2]/80 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-cyan-glow group relative overflow-hidden"
               >
-                {/* Subtle top gold accent line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D6AD55] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Subtle top cyan accent line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#1491C2] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#101A35] border border-[#D6AD55]/40 flex items-center justify-center group-hover:border-[#D6AD55] group-hover:bg-[#101A35] transition-all">
-                    <Icon className="w-6 h-6 text-[#D6AD55] group-hover:scale-110 transition-transform" />
+                  <div className="w-12 h-12 rounded-xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center group-hover:border-[#1491C2] transition-all">
+                    <Icon className="w-6 h-6 text-[#1491C2] group-hover:scale-110 transition-transform" />
                   </div>
-                  <span className="font-serif text-2xl font-bold text-[#D6AD55]/40 group-hover:text-[#D6AD55] transition-colors">
+                  <span className="font-serif text-2xl font-bold text-[#1491C2]/40 group-hover:text-[#1491C2] transition-colors">
                     {feature.number}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-white mb-3 group-hover:text-[#D6AD55] transition-colors">
+                <h3 className="font-serif text-xl font-bold text-white mb-3 group-hover:text-[#1491C2] transition-colors">
                   {feature.title}
                 </h3>
 

@@ -7,8 +7,8 @@ export const ScrollRotatingLogo: React.FC = () => {
       style={{ perspective: '1200px' }}
       aria-hidden="true"
     >
-      {/* Ambient Radial Golden Center Glow (pure backdrop glow, no rings) */}
-      <div className="absolute w-[500px] h-[500px] sm:w-[650px] sm:h-[650px] rounded-full bg-[radial-gradient(circle,rgba(214,173,85,0.14)_0%,rgba(16,26,53,0.08)_50%,transparent_75%)] blur-3xl pointer-events-none" />
+      {/* Ambient Radial Cyan Blue Center Glow (pure backdrop glow, no rings) */}
+      <div className="absolute w-[500px] h-[500px] sm:w-[650px] sm:h-[650px] rounded-full bg-[radial-gradient(circle,rgba(20,145,194,0.2)_0%,rgba(3,31,81,0.12)_50%,transparent_75%)] blur-3xl pointer-events-none" />
 
       {/* 3D Y-Axis Constant Low-Speed Rotating Logo (No Rings, Pure Logo, Steady Low Speed) */}
       <div
@@ -17,7 +17,7 @@ export const ScrollRotatingLogo: React.FC = () => {
           width: 'min(70vw, 460px)',
           height: 'min(70vw, 460px)',
           transformStyle: 'preserve-3d',
-          opacity: 0.22,
+          opacity: 0.25,
         }}
       >
         {/* FRONT FACE (Visible during 0° - 90° and 270° - 360°) */}
@@ -31,7 +31,7 @@ export const ScrollRotatingLogo: React.FC = () => {
           <img
             src="/logo.png"
             alt="PARVA Logo Front"
-            className="w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(214,173,85,0.35)] brightness-110 contrast-125"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(20,145,194,0.45)] brightness-110 contrast-125"
           />
         </div>
 
@@ -46,7 +46,7 @@ export const ScrollRotatingLogo: React.FC = () => {
           <img
             src="/logo.png"
             alt="PARVA Logo Back"
-            className="w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(214,173,85,0.35)] brightness-110 contrast-125"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(20,145,194,0.45)] brightness-110 contrast-125"
           />
         </div>
       </div>
