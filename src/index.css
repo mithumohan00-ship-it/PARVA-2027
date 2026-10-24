@@ -65,6 +65,20 @@ section[id], div[id] {
   }
 }
 
+@keyframes spin-y-slow {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-spin-y-slow {
+  animation: spin-y-slow 22s linear infinite;
+  will-change: transform;
+}
+
 .animate-spin-slow {
   animation: spin-slow 70s linear infinite;
   will-change: transform;
