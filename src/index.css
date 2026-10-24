@@ -35,6 +35,15 @@ section[id], div[id] {
   scroll-margin-top: 5.5rem;
 }
 
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Continuous Slow Y-Axis Spin for Background Logo */
 @keyframes spin-y-slow {
   from {
