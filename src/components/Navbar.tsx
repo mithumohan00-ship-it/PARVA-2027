@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, Phone, Sparkles, ChevronRight } from 'lucide-react';
+import { Menu, X, Calendar, ChevronRight } from 'lucide-react';
 
-interface NavbarProps {
-  onBookClick: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
+export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -80,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#031F51]/95 backdrop-blur-md shadow-lg border-b border-[#1491C2]/25 py-3'
+            ? 'bg-[#031F51]/95 backdrop-blur-md shadow-lg border-b border-[#1491C2]/25 py-3.5'
             : 'bg-gradient-to-b from-[#031F51]/95 via-[#031F51]/70 to-transparent py-4 sm:py-5'
         }`}
       >
@@ -141,39 +137,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
               })}
             </nav>
 
-            {/* Right CTAs (Desktop & Mobile) */}
-            <div className="flex items-center gap-3">
-              {/* Phone call shortcut (Desktop XL) */}
-              <a
-                href="tel:9632645625"
-                className="hidden xl:flex items-center gap-2 text-xs font-medium text-slate-300 hover:text-white transition-colors py-1.5 px-2 rounded-lg hover:bg-white/5"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#1491C2]" />
-                <span className="font-mono">+91 96326 45625</span>
-              </a>
-
-              {/* Mobile Quick Book CTA Button (Visible on screens < 640px) */}
-              <button
-                onClick={onBookClick}
-                className="sm:hidden inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#1491C2] to-[#245DA9] rounded-md shadow-sm active:scale-95 transition-all"
-              >
-                Book Stall
-              </button>
-
-              {/* Desktop CTA Button */}
-              <button
-                onClick={onBookClick}
-                className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#1491C2] to-[#245DA9] rounded-lg shadow-[0_0_20px_rgba(20,145,194,0.35)] hover:brightness-110 active:scale-95 transition-all duration-200"
-              >
-                <Sparkles className="w-3.5 h-3.5 mr-1.5 text-white" />
-                Book Your Stall
-              </button>
-
-              {/* Mobile Hamburger Toggle Button */}
+            {/* Mobile Hamburger Toggle Button (lg:hidden) */}
+            <div className="lg:hidden flex items-center">
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
+                className="p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? (
@@ -250,31 +219,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
               </nav>
             </div>
 
-            {/* Drawer Bottom CTAs & Contacts */}
-            <div className="pt-6 border-t border-white/10 space-y-4">
+            {/* Drawer Bottom Details */}
+            <div className="pt-6 border-t border-white/10 space-y-3">
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Calendar className="w-4 h-4 text-[#1491C2]" />
-                <span>9–10 January 2027 · MEI Layout</span>
+                <span>9–10 January 2027 · MEI Layout Ground</span>
               </div>
-
-              <a
-                href="tel:9632645625"
-                className="flex items-center gap-2 text-xs text-[#1491C2] font-mono hover:underline"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                <span>+91 96326 45625 (Organiser Desk)</span>
-              </a>
-
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onBookClick();
-                }}
-                className="w-full py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#1491C2] to-[#245DA9] rounded-xl shadow-md text-center active:scale-95 transition-all flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Book Your Stall</span>
-              </button>
             </div>
           </div>
         </div>

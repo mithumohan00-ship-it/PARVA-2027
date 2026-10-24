@@ -61,7 +61,7 @@ export const App: React.FC = () => {
       <ScrollRotatingLogo />
 
       {/* Top Navbar */}
-      <Navbar onBookClick={() => scrollToBooking()} />
+      <Navbar />
 
       <main className="flex-grow relative z-10">
         {/* Hero Section */}
