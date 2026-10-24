@@ -18,6 +18,7 @@ import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
+import { ScrollRotatingLogo } from './components/ScrollRotatingLogo';
 import { PackageType } from './types';
 
 export const App: React.FC = () => {
@@ -55,11 +56,14 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A1022] text-slate-100 flex flex-col font-sans selection:bg-[#D6AD55] selection:text-[#101A35]">
+    <div className="min-h-screen bg-[#0A1022] text-slate-100 flex flex-col font-sans selection:bg-[#D6AD55] selection:text-[#101A35] relative">
+      {/* 3D X-Axis Center Scroll-Rotating Logo (Rotates across entire page with scroll) */}
+      <ScrollRotatingLogo />
+
       {/* Top Navbar */}
       <Navbar onBookClick={() => scrollToBooking()} />
 
-      <main className="flex-grow">
+      <main className="flex-grow relative z-10">
         {/* Hero Section */}
         <HeroSection
           onReserveClick={() => scrollToBooking()}

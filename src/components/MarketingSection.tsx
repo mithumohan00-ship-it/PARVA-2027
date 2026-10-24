@@ -48,7 +48,7 @@ export const MarketingSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#0A1022] relative overflow-hidden">
+    <section className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">

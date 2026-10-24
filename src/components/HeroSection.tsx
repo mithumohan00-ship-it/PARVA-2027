@@ -1,6 +1,5 @@
 import React from 'react';
 import { Calendar, MapPin, Clock, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
-import { RotatingBackgroundLogo } from './RotatingBackgroundLogo';
 
 interface HeroSectionProps {
   onReserveClick: () => void;
@@ -14,7 +13,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#0A1022]"
+      className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#0A1022]/60"
     >
       {/* Background Architectural/Campus Image with Dark Navy & Gold Vignette */}
       <div className="absolute inset-0 z-0">
@@ -33,15 +32,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             backgroundImage: `radial-gradient(circle at 1px 1px, #D6AD55 1px, transparent 0)`,
             backgroundSize: '40px 40px',
           }}
-        />
-      </div>
-
-      {/* Rotating Official Logo Emblem in Background with Orbital Rings */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 flex items-center justify-center">
-        <RotatingBackgroundLogo
-          size={580}
-          opacity={0.15}
-          className="sm:w-[700px] sm:h-[700px] lg:w-[840px] lg:h-[840px] drop-shadow-[0_0_60px_rgba(214,173,85,0.25)]"
         />
       </div>
 

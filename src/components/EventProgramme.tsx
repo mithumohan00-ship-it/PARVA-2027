@@ -3,7 +3,7 @@ import { Calendar, Clock, Eye, Sparkles, CheckCircle2, AlertCircle } from 'lucid
 
 export const EventProgramme: React.FC = () => {
   return (
-    <section id="schedule" className="py-24 bg-[#0A1022] relative">
+    <section id="schedule" className="py-24 bg-[#0A1022]/85 relative backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">

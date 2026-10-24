@@ -63,7 +63,7 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="py-24 bg-[#101A35] relative">
+    <section id="faqs" className="py-24 bg-[#101A35]/85 relative backdrop-blur-[1px]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">

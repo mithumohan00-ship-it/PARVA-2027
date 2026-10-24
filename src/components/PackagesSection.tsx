@@ -8,7 +8,7 @@ interface PackagesSectionProps {
 
 export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackage }) => {
   return (
-    <section id="packages" className="py-24 bg-[#101A35] relative">
+    <section id="packages" className="py-24 bg-[#101A35]/85 relative backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">

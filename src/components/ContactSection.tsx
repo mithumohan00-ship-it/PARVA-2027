@@ -15,7 +15,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onEnquireClick }
   const email = 'bhadrisacademy.expo2026@gmail.com';
 
   return (
-    <section id="contact" className="py-24 bg-[#0A1022] relative overflow-hidden">
+    <section id="contact" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#182547]/50 rounded-full blur-3xl pointer-events-none" />
 

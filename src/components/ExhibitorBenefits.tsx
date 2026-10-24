@@ -54,7 +54,7 @@ export const ExhibitorBenefits: React.FC<ExhibitorBenefitsProps> = ({
   ];
 
   return (
-    <section id="benefits" className="py-24 bg-[#0A1022] relative overflow-hidden">
+    <section id="benefits" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Background glow */}
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#D6AD55]/5 rounded-full blur-3xl pointer-events-none" />
 

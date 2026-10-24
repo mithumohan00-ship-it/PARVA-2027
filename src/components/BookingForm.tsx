@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { PackageType, ExhibitorEnquiry } from '../types';
 import { submitExhibitorEnquiry, isSupabaseConfigured } from '../lib/supabase';
-import { RotatingBackgroundLogo } from './RotatingBackgroundLogo';
 
 interface BookingFormProps {
   initialPackage?: PackageType;
@@ -156,13 +155,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   const isConfigured = isSupabaseConfigured();
 
   return (
-    <section id="booking" className="py-24 bg-[#0A1022] relative overflow-hidden">
-      {/* Decorative background glow and rotating logo watermark */}
+    <section id="booking" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
+      {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#D6AD55]/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
-        <RotatingBackgroundLogo size={700} opacity={0.05} />
-      </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}

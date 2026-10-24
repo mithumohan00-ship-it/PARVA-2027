@@ -30,7 +30,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#0A1022] relative overflow-hidden">
+    <section id="about" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#182547]/40 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
 
