@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Target,
   Users,
@@ -12,7 +12,8 @@ import {
 
 export const WhyParvaSection: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const features = [
     {
@@ -59,40 +60,33 @@ export const WhyParvaSection: React.FC = () => {
     },
   ];
 
-  const handleScroll = () => {
-    if (sliderRef.current) {
-      const scrollLeft = sliderRef.current.scrollLeft;
-      const card = sliderRef.current.firstElementChild as HTMLElement | null;
-      if (card) {
-        const cardWidth = card.offsetWidth + 16;
-        const index = Math.round(scrollLeft / cardWidth);
-        setActiveSlide(Math.min(Math.max(index, 0), features.length - 1));
-      }
-    }
-  };
-
-  const scrollToSlide = (index: number) => {
-    if (sliderRef.current) {
-      const card = sliderRef.current.firstElementChild as HTMLElement | null;
-      if (card) {
-        const cardWidth = card.offsetWidth + 16;
-        sliderRef.current.scrollTo({
-          left: index * cardWidth,
-          behavior: 'smooth',
-        });
-        setActiveSlide(index);
-      }
-    }
-  };
+  const total = features.length;
 
   const handlePrev = () => {
-    const prev = Math.max(0, activeSlide - 1);
-    scrollToSlide(prev);
+    setActiveSlide((prev) => (prev - 1 + total) % total);
   };
 
   const handleNext = () => {
-    const next = Math.min(features.length - 1, activeSlide + 1);
-    scrollToSlide(next);
+    setActiveSlide((prev) => (prev + 1) % total);
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
   };
 
   return (
@@ -157,46 +151,83 @@ export const WhyParvaSection: React.FC = () => {
         </div>
 
         {/* ========================================================= */}
-        {/* MOBILE VIEW: Touch Swipeable Horizontal Slider (< md)     */}
+        {/* MOBILE VIEW: 3D Stacked Overlapping Cards Slider (< md)   */}
         {/* ========================================================= */}
         <div className="block md:hidden">
-          {/* Active Counter Header */}
-          <div className="flex items-center justify-between px-1 mb-3 text-xs">
-            <span className="font-mono text-[#1491C2] font-semibold tracking-wider">
-              OPPORTUNITY {features[activeSlide]?.number || '01'} / 06
-            </span>
-            <span className="text-slate-400 flex items-center gap-1">
-              Swipe to explore →
-            </span>
-          </div>
-
-          {/* Swipeable Cards Container */}
+          {/* Stacked Cards Area */}
           <div
-            ref={sliderRef}
-            onScroll={handleScroll}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-4 px-4 scroll-smooth"
-            style={{ WebkitOverflowScrolling: 'touch' }}
+            className="relative w-full max-w-[340px] mx-auto h-[380px] flex items-center justify-center touch-pan-y"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {features.map((feature, idx) => {
               const Icon = feature.icon;
+
+              let offset = idx - activeSlide;
+              if (offset < -Math.floor(total / 2)) {
+                offset += total;
+              } else if (offset > Math.floor((total - 1) / 2)) {
+                offset -= total;
+              }
+
+              const isCenter = offset === 0;
+              const isLeft = offset === -1;
+              const isRight = offset === 1;
+
+              let transform = 'translateX(0) scale(0.8) rotate(0deg)';
+              let zIndex = 10;
+              let opacity = 0;
+
+              if (isCenter) {
+                transform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
+                zIndex = 30;
+                opacity = 1;
+              } else if (isLeft) {
+                transform = 'translateX(-26px) translateY(8px) scale(0.92) rotate(-5deg)';
+                zIndex = 20;
+                opacity = 0.65;
+              } else if (isRight) {
+                transform = 'translateX(26px) translateY(8px) scale(0.92) rotate(5deg)';
+                zIndex = 20;
+                opacity = 0.65;
+              } else {
+                transform = `translateX(${offset > 0 ? 50 : -50}px) scale(0.75) rotate(0deg)`;
+                zIndex = 10;
+                opacity = 0;
+              }
+
               return (
                 <div
                   key={idx}
-                  className="w-[85vw] max-w-[320px] shrink-0 snap-center bg-[#121481]/95 border border-[#245DA9]/50 rounded-2xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden"
+                  onClick={() => {
+                    if (isLeft) handlePrev();
+                    if (isRight) handleNext();
+                  }}
+                  style={{
+                    transform,
+                    zIndex,
+                    opacity,
+                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                  }}
+                  className={`absolute inset-0 rounded-3xl p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer ${
+                    isCenter
+                      ? 'bg-[#121481] border-2 border-[#1491C2] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7),0_0_25px_rgba(20,145,194,0.3)]'
+                      : 'bg-[#08255E] border border-[#245DA9]/60 shadow-lg'
+                  }`}
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#1491C2] to-transparent" />
-
                   <div>
+                    {/* Top Row with Icon and Big Number */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-2xl bg-[#031F51] border border-[#245DA9]/60 flex items-center justify-center">
                         <Icon className="w-6 h-6 text-[#1491C2]" />
                       </div>
-                      <span className="font-serif text-xl font-bold text-[#1491C2]">
+                      <span className="font-serif text-2xl font-bold text-[#1491C2]">
                         {feature.number}
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-lg font-bold text-white mb-2 leading-snug">
+                    <h3 className="font-serif text-xl font-bold text-white mb-2 leading-snug">
                       {feature.title}
                     </h3>
 
@@ -205,39 +236,38 @@ export const WhyParvaSection: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
                     <span>Exhibitor Value</span>
-                    <span className="text-[#1491C2]">Admissions 2027–28</span>
+                    <span className="text-[#1491C2] font-semibold">Admissions 2027–28</span>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Mobile Slider Controls: Arrows & Dot Pagination */}
-          <div className="flex items-center justify-between pt-2 px-1">
+          {/* Bottom Stack Controls: [<]  ══ • • • • •  [>] */}
+          <div className="flex items-center justify-center gap-6 mt-8">
             {/* Prev Button */}
             <button
               type="button"
               onClick={handlePrev}
-              disabled={activeSlide === 0}
-              className="w-9 h-9 rounded-full bg-[#121481] border border-[#245DA9]/50 flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#1491C2] active:scale-95 transition-all shadow-sm"
+              className="w-11 h-11 rounded-full bg-[#121481] border border-[#245DA9]/60 hover:border-[#1491C2] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-cyan-glow"
               aria-label="Previous opportunity"
             >
               <ChevronLeft className="w-5 h-5 text-[#1491C2]" />
             </button>
 
-            {/* Pagination Dots */}
+            {/* Pagination Dots with Active Pill */}
             <div className="flex items-center gap-1.5">
               {features.map((_, dotIdx) => (
                 <button
                   key={dotIdx}
                   type="button"
-                  onClick={() => scrollToSlide(dotIdx)}
+                  onClick={() => setActiveSlide(dotIdx)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     activeSlide === dotIdx
-                      ? 'w-6 bg-[#1491C2] shadow-[0_0_8px_#1491C2]'
-                      : 'w-2 bg-[#245DA9]/40 hover:bg-[#245DA9]'
+                      ? 'w-7 bg-[#1491C2] shadow-[0_0_10px_#1491C2]'
+                      : 'w-2 bg-[#245DA9]/50 hover:bg-[#1491C2]/50'
                   }`}
                   aria-label={`Go to opportunity ${dotIdx + 1}`}
                 />
@@ -248,8 +278,7 @@ export const WhyParvaSection: React.FC = () => {
             <button
               type="button"
               onClick={handleNext}
-              disabled={activeSlide === features.length - 1}
-              className="w-9 h-9 rounded-full bg-[#121481] border border-[#245DA9]/50 flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#1491C2] active:scale-95 transition-all shadow-sm"
+              className="w-11 h-11 rounded-full bg-[#121481] border border-[#245DA9]/60 hover:border-[#1491C2] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-cyan-glow"
               aria-label="Next opportunity"
             >
               <ChevronRight className="w-5 h-5 text-[#1491C2]" />

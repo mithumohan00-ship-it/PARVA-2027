@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Tv,
   BookOpen,
@@ -13,7 +13,8 @@ import {
 
 export const MarketingSection: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const marketingPillars = [
     {
@@ -60,40 +61,33 @@ export const MarketingSection: React.FC = () => {
     },
   ];
 
-  const handleScroll = () => {
-    if (sliderRef.current) {
-      const scrollLeft = sliderRef.current.scrollLeft;
-      const card = sliderRef.current.firstElementChild as HTMLElement | null;
-      if (card) {
-        const cardWidth = card.offsetWidth + 16; // card width + gap (16px)
-        const index = Math.round(scrollLeft / cardWidth);
-        setActiveSlide(Math.min(Math.max(index, 0), marketingPillars.length - 1));
-      }
-    }
-  };
-
-  const scrollToSlide = (index: number) => {
-    if (sliderRef.current) {
-      const card = sliderRef.current.firstElementChild as HTMLElement | null;
-      if (card) {
-        const cardWidth = card.offsetWidth + 16;
-        sliderRef.current.scrollTo({
-          left: index * cardWidth,
-          behavior: 'smooth',
-        });
-        setActiveSlide(index);
-      }
-    }
-  };
+  const total = marketingPillars.length;
 
   const handlePrev = () => {
-    const prev = Math.max(0, activeSlide - 1);
-    scrollToSlide(prev);
+    setActiveSlide((prev) => (prev - 1 + total) % total);
   };
 
   const handleNext = () => {
-    const next = Math.min(marketingPillars.length - 1, activeSlide + 1);
-    scrollToSlide(next);
+    setActiveSlide((prev) => (prev + 1) % total);
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
   };
 
   return (
@@ -157,39 +151,80 @@ export const MarketingSection: React.FC = () => {
         </div>
 
         {/* ========================================================= */}
-        {/* MOBILE VIEW: Touch Swipeable Horizontal Slider (< md)     */}
+        {/* MOBILE VIEW: 3D Stacked Overlapping Cards Slider (< md)   */}
         {/* ========================================================= */}
         <div className="block md:hidden mb-8">
-          {/* Active Counter Header */}
-          <div className="flex items-center justify-between px-1 mb-3 text-xs">
-            <span className="font-mono text-[#1491C2] font-semibold tracking-wider">
-              INITIATIVE {String(activeSlide + 1).padStart(2, '0')} / {String(marketingPillars.length).padStart(2, '0')}
-            </span>
-            <span className="text-slate-400 flex items-center gap-1">
-              Swipe to explore →
-            </span>
-          </div>
-
-          {/* Swipeable Cards Container */}
+          {/* Stacked Cards Area */}
           <div
-            ref={sliderRef}
-            onScroll={handleScroll}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-4 px-4 scroll-smooth"
-            style={{ WebkitOverflowScrolling: 'touch' }}
+            className="relative w-full max-w-[340px] mx-auto h-[380px] flex items-center justify-center touch-pan-y"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {marketingPillars.map((pillar, idx) => {
               const Icon = pillar.icon;
+
+              // Calculate circular offset relative to activeSlide
+              let offset = idx - activeSlide;
+              if (offset < -Math.floor(total / 2)) {
+                offset += total;
+              } else if (offset > Math.floor((total - 1) / 2)) {
+                offset -= total;
+              }
+
+              const isCenter = offset === 0;
+              const isLeft = offset === -1;
+              const isRight = offset === 1;
+
+              // Compute inline stacked transforms
+              let transform = 'translateX(0) scale(0.8) rotate(0deg)';
+              let zIndex = 10;
+              let opacity = 0;
+
+              if (isCenter) {
+                transform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
+                zIndex = 30;
+                opacity = 1;
+              } else if (isLeft) {
+                transform = 'translateX(-26px) translateY(8px) scale(0.92) rotate(-5deg)';
+                zIndex = 20;
+                opacity = 0.65;
+              } else if (isRight) {
+                transform = 'translateX(26px) translateY(8px) scale(0.92) rotate(5deg)';
+                zIndex = 20;
+                opacity = 0.65;
+              } else {
+                transform = `translateX(${offset > 0 ? 50 : -50}px) scale(0.75) rotate(0deg)`;
+                zIndex = 10;
+                opacity = 0;
+              }
+
               return (
                 <div
                   key={idx}
-                  className="w-[85vw] max-w-[320px] shrink-0 snap-center bg-[#121481]/95 border border-[#245DA9]/50 rounded-2xl p-6 flex flex-col justify-between shadow-xl"
+                  onClick={() => {
+                    if (isLeft) handlePrev();
+                    if (isRight) handleNext();
+                  }}
+                  style={{
+                    transform,
+                    zIndex,
+                    opacity,
+                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                  }}
+                  className={`absolute inset-0 rounded-3xl p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer ${
+                    isCenter
+                      ? 'bg-[#121481] border-2 border-[#1491C2] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7),0_0_25px_rgba(20,145,194,0.3)]'
+                      : 'bg-[#08255E] border border-[#245DA9]/60 shadow-lg'
+                  }`}
                 >
                   <div>
+                    {/* Card Top Row */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-2xl bg-[#031F51] border border-[#245DA9]/60 flex items-center justify-center shadow-inner">
                         <Icon className="w-6 h-6 text-[#1491C2]" />
                       </div>
-                      <span className="text-[11px] font-mono font-bold text-[#1491C2] px-2 py-0.5 rounded bg-[#031F51] border border-[#1491C2]/30">
+                      <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-full bg-[#031F51] text-[#1491C2] border border-[#1491C2]/30">
                         0{idx + 1}
                       </span>
                     </div>
@@ -198,7 +233,7 @@ export const MarketingSection: React.FC = () => {
                       {pillar.title}
                     </span>
 
-                    <h3 className="font-serif text-lg font-bold text-white mb-2 leading-snug">
+                    <h3 className="font-serif text-xl font-bold text-white mb-2 leading-snug">
                       {pillar.headline}
                     </h3>
 
@@ -207,41 +242,40 @@ export const MarketingSection: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
                     <span>Planned Campaign</span>
-                    <span className="text-[#1491C2]/90 font-medium">Bengaluru North</span>
+                    <span className="text-[#1491C2] font-semibold">Bengaluru North</span>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Mobile Slider Controls: Arrows & Dot Pagination */}
-          <div className="flex items-center justify-between pt-2 px-1">
+          {/* Bottom Stack Controls: [<]  ══ • • • • •  [>] */}
+          <div className="flex items-center justify-center gap-6 mt-8">
             {/* Prev Button */}
             <button
               type="button"
               onClick={handlePrev}
-              disabled={activeSlide === 0}
-              className="w-9 h-9 rounded-full bg-[#121481] border border-[#245DA9]/50 flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#1491C2] active:scale-95 transition-all shadow-sm"
+              className="w-11 h-11 rounded-full bg-[#121481] border border-[#245DA9]/60 hover:border-[#1491C2] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-cyan-glow"
               aria-label="Previous initiative"
             >
               <ChevronLeft className="w-5 h-5 text-[#1491C2]" />
             </button>
 
-            {/* Pagination Dots */}
+            {/* Pagination Dots with Active Pill */}
             <div className="flex items-center gap-1.5">
               {marketingPillars.map((_, dotIdx) => (
                 <button
                   key={dotIdx}
                   type="button"
-                  onClick={() => scrollToSlide(dotIdx)}
+                  onClick={() => setActiveSlide(dotIdx)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     activeSlide === dotIdx
-                      ? 'w-6 bg-[#1491C2] shadow-[0_0_8px_#1491C2]'
-                      : 'w-2 bg-[#245DA9]/40 hover:bg-[#245DA9]'
+                      ? 'w-7 bg-[#1491C2] shadow-[0_0_10px_#1491C2]'
+                      : 'w-2 bg-[#245DA9]/50 hover:bg-[#1491C2]/50'
                   }`}
-                  aria-label={`Go to initiative ${dotIdx + 1}`}
+                  aria-label={`Go to slide ${dotIdx + 1}`}
                 />
               ))}
             </div>
@@ -250,8 +284,7 @@ export const MarketingSection: React.FC = () => {
             <button
               type="button"
               onClick={handleNext}
-              disabled={activeSlide === marketingPillars.length - 1}
-              className="w-9 h-9 rounded-full bg-[#121481] border border-[#245DA9]/50 flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#1491C2] active:scale-95 transition-all shadow-sm"
+              className="w-11 h-11 rounded-full bg-[#121481] border border-[#245DA9]/60 hover:border-[#1491C2] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-cyan-glow"
               aria-label="Next initiative"
             >
               <ChevronRight className="w-5 h-5 text-[#1491C2]" />
