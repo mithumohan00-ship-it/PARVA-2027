@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export const ScrollRotatingLogo: React.FC = () => {
-  const [rotationX, setRotationX] = useState(0);
+  const [rotationY, setRotationY] = useState(0);
   const targetRotationRef = useRef(0);
   const currentRotationRef = useRef(0);
   const autoAngleRef = useRef(0);
@@ -10,7 +10,8 @@ export const ScrollRotatingLogo: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset;
-      // Scroll drives rotation on X axis: 1px scroll = 0.45 degrees of 3D rotation
+      // Scroll drives rotation on Y-axis (horizontal 3D spin)
+      // Every 1px of scroll translates to 0.45 degrees of 3D rotation
       targetRotationRef.current = scrollY * 0.45;
     };
 
@@ -23,7 +24,7 @@ export const ScrollRotatingLogo: React.FC = () => {
       const delta = Math.min((time - lastTime) / 1000, 0.1);
       lastTime = time;
 
-      // Ambient slow continuous drift (approx 12 deg/sec) so it's always alive
+      // Ambient slow continuous rotation on Y-axis (approx 12 deg/sec)
       autoAngleRef.current += delta * 12;
 
       // Smooth linear interpolation (lerp) for buttery 60fps/120fps motion
@@ -31,7 +32,7 @@ export const ScrollRotatingLogo: React.FC = () => {
       const diff = desiredAngle - currentRotationRef.current;
       currentRotationRef.current += diff * 0.08;
 
-      setRotationX(currentRotationRef.current);
+      setRotationY(currentRotationRef.current);
       rafIdRef.current = requestAnimationFrame(animate);
     };
 
@@ -51,64 +52,48 @@ export const ScrollRotatingLogo: React.FC = () => {
       style={{ perspective: '1200px' }}
       aria-hidden="true"
     >
-      {/* Ambient Radial Golden Center Glow */}
-      <div className="absolute w-[600px] h-[600px] sm:w-[750px] sm:h-[750px] rounded-full bg-[radial-gradient(circle,rgba(214,173,85,0.12)_0%,rgba(16,26,53,0.06)_50%,transparent_75%)] blur-2xl pointer-events-none" />
+      {/* Ambient Radial Golden Center Glow (without rings) */}
+      <div className="absolute w-[500px] h-[500px] sm:w-[650px] sm:h-[650px] rounded-full bg-[radial-gradient(circle,rgba(214,173,85,0.15)_0%,rgba(16,26,53,0.08)_50%,transparent_75%)] blur-3xl pointer-events-none" />
 
-      {/* 3D X-Axis Rotating Assembly */}
+      {/* 3D Y-Axis Rotating Logo (No Rings - Pure Logo) */}
       <div
         className="relative flex items-center justify-center"
         style={{
-          width: 'min(78vw, 560px)',
-          height: 'min(78vw, 560px)',
+          width: 'min(70vw, 480px)',
+          height: 'min(70vw, 480px)',
           transformStyle: 'preserve-3d',
-          transform: `rotateX(${rotationX}deg)`,
+          transform: `rotateY(${rotationY}deg)`,
           willChange: 'transform',
+          opacity: 0.22,
         }}
       >
-        {/* Outer Orbit Dashed Ring */}
-        <div
-          className="absolute inset-0 rounded-full border-2 border-[#D6AD55]/25 border-dashed shadow-[0_0_40px_rgba(214,173,85,0.18)]"
-          style={{ transform: 'translateZ(0px)' }}
-        />
-
-        {/* Middle Cardinal Ring with Star Markers */}
-        <div
-          className="absolute inset-6 sm:inset-8 rounded-full border border-[#D6AD55]/30"
-          style={{ transform: 'translateZ(1px)' }}
-        >
-          <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#D6AD55] shadow-gold-sm" />
-          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#D6AD55] shadow-gold-sm" />
-          <div className="absolute top-1/2 -left-1.5 -translate-y-1/2 w-2 h-2 rounded-full bg-[#D6AD55]/70" />
-          <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-2 h-2 rounded-full bg-[#D6AD55]/70" />
-        </div>
-
         {/* FRONT FACE (Visible during 0° - 90° and 270° - 360°) */}
         <div
-          className="absolute inset-14 sm:inset-16 rounded-full bg-gradient-to-br from-[#182547]/85 via-[#101A35]/90 to-[#0A1022]/85 border-2 border-[#D6AD55]/50 flex items-center justify-center p-7 sm:p-9 shadow-gold-glow backdrop-blur-[2px]"
+          className="absolute inset-0 flex items-center justify-center p-4 sm:p-6"
           style={{
             backfaceVisibility: 'hidden',
-            transform: 'translateZ(3px)',
+            transform: 'translateZ(1px)',
           }}
         >
           <img
             src="/logo.png"
-            alt="PARVA 2027 Emblem Front"
-            className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(214,173,85,0.45)] brightness-110 contrast-125"
+            alt="PARVA Logo Front"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(214,173,85,0.4)] brightness-110 contrast-125"
           />
         </div>
 
-        {/* BACK FACE (Rotated 180° on X so when flipped, it shows right-side up!) */}
+        {/* BACK FACE (Rotated 180° on Y-axis so when flipped, it shows right-side up!) */}
         <div
-          className="absolute inset-14 sm:inset-16 rounded-full bg-gradient-to-br from-[#182547]/85 via-[#101A35]/90 to-[#0A1022]/85 border-2 border-[#D6AD55]/50 flex items-center justify-center p-7 sm:p-9 shadow-gold-glow backdrop-blur-[2px]"
+          className="absolute inset-0 flex items-center justify-center p-4 sm:p-6"
           style={{
             backfaceVisibility: 'hidden',
-            transform: 'rotateX(180deg) translateZ(3px)',
+            transform: 'rotateY(180deg) translateZ(1px)',
           }}
         >
           <img
             src="/logo.png"
-            alt="PARVA 2027 Emblem Back"
-            className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(214,173,85,0.45)] brightness-110 contrast-125"
+            alt="PARVA Logo Back"
+            className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(214,173,85,0.4)] brightness-110 contrast-125"
           />
         </div>
       </div>
