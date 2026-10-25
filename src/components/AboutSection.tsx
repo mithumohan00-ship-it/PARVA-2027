@@ -1,5 +1,5 @@
 import React from 'react';
-import { School, Users, MessagesSquare, CalendarDays, Info, Award } from 'lucide-react';
+import { School, Users, MessagesSquare, CalendarDays, Info } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const stats = [
@@ -37,11 +37,6 @@ export const AboutSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Award className="w-3.5 h-3.5" />
-            <span>About The Expo</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
             More Than an Expo.{' '}
             <span className="block text-gold-gradient font-normal mt-1">
@@ -103,10 +98,6 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-7 p-8 sm:p-12 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] text-[#D6AD55] text-xs font-semibold uppercase tracking-wider border border-[#D6AD55]/30">
-              <span>Bengaluru North Admission Corridor</span>
-            </div>
-
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-snug">
               Position Your Campus at the Very Heart of Admission Season
             </h3>

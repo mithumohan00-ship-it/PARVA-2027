@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, Send, Sparkles, MessageCircle, Clock } from 'lucide-react';
+import { Phone, Mail, Send, Sparkles, Clock } from 'lucide-react';
 
 interface ContactSectionProps {
   onEnquireClick: () => void;
@@ -21,11 +21,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onEnquireClick }
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <MessageCircle className="w-3.5 h-3.5" />
-            <span>Organising Committee</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Let&rsquo;s Make PARVA a{' '}
             <span className="text-gold-gradient font-normal">Success Together.</span>
@@ -134,7 +129,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onEnquireClick }
               </h3>
 
               <p className="text-xs text-slate-300 font-light mb-6">
-                Lock in your priority stall location before the early-bird deadline of 15 November 2026.
+                Lock in your priority stall location and showcase your institution.
               </p>
 
               <div className="space-y-2.5 mb-6 text-xs text-slate-300">

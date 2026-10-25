@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 export const BookingTimeline: React.FC = () => {
   const milestones = [
@@ -45,11 +45,6 @@ export const BookingTimeline: React.FC = () => {
     <section className="py-24 bg-[#101A35]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Calendar className="w-3.5 h-3.5" />
-            <span>Important Milestones</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Key Dates for{' '}
             <span className="text-gold-gradient font-normal">Exhibitors</span>

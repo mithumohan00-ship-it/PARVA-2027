@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Sparkles, Crown, ArrowRight, Clock, HelpCircle } from 'lucide-react';
+import { Check, Crown, ArrowRight, HelpCircle } from 'lucide-react';
 import { PackageType } from '../types';
 
 interface PackagesSectionProps {
@@ -12,32 +12,15 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Exhibitor Packages</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Choose Your{' '}
             <span className="text-gold-gradient font-normal">Exhibition Presence</span>
           </h2>
 
-          <p className="text-base text-slate-300 font-light max-w-2xl mx-auto mb-6">
+          <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
             Tailored packages designed to match your institutional recruitment goals,
             brand stature, and stage presence.
           </p>
-
-          {/* Early-Bird Announcement & Rate Clarification */}
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 p-3 px-6 rounded-2xl bg-[#182547] border border-[#D6AD55]/50 shadow-md">
-            <div className="flex items-center gap-2 text-xs font-bold text-[#D6AD55] uppercase tracking-wider">
-              <Clock className="w-4 h-4 text-[#D6AD55]" />
-              <span>Early-Bird Discount: Confirmed by 15 November 2026</span>
-            </div>
-            <span className="hidden sm:inline text-white/30">|</span>
-            <span className="text-xs text-slate-300 font-medium tracking-wide">
-              Package Rates Available on Request
-            </span>
-          </div>
         </div>
 
         {/* Three Pricing / Package Cards */}
@@ -68,7 +51,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                   Rates on Request
                 </span>
                 <span className="block text-xs text-slate-500 mt-1">
-                  Early-bird applicable before 15 Nov 2026
+                  Full two-day exhibition presence
                 </span>
               </div>
 

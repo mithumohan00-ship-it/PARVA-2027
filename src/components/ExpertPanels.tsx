@@ -7,7 +7,6 @@ import {
   Rocket,
   Briefcase,
   Users2,
-  Crown,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -116,11 +115,6 @@ export const ExpertPanels: React.FC = () => {
     <section id="schedule" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Thought Leadership</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Conversations That{' '}
             <span className="text-gold-gradient font-normal">
@@ -171,11 +165,6 @@ export const ExpertPanels: React.FC = () => {
                     {panel.description}
                   </p>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
-                  <span>Interactive Q&A Session</span>
-                  <span className="text-white/60">Open to All Attendees</span>
-                </div>
               </div>
             );
           })}
@@ -183,10 +172,6 @@ export const ExpertPanels: React.FC = () => {
           {/* Platinum Sponsor Opportunity Card */}
           <div className="bg-gradient-to-br from-[#182547] to-[#101A35] border-2 border-[#D6AD55] rounded-2xl p-7 flex flex-col justify-between shadow-gold-glow md:col-span-2 lg:col-span-2">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D6AD55]/20 text-[#D6AD55] text-xs font-bold uppercase tracking-wider mb-4 border border-[#D6AD55]/30">
-                <Crown className="w-3.5 h-3.5" />
-                <span>Exhibitor Advantage</span>
-              </div>
               <h3 className="font-serif text-2xl font-bold text-white mb-2">
                 Join the Expert Stage as a Platinum Partner
               </h3>
@@ -303,11 +288,6 @@ export const ExpertPanels: React.FC = () => {
                       {panel.description}
                     </p>
                   </div>
-
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>Interactive Q&A</span>
-                    <span className="text-white/70">Open to All</span>
-                  </div>
                 </div>
               );
             })}
@@ -368,11 +348,6 @@ export const ExpertPanels: React.FC = () => {
                   }`}
                 >
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6AD55]/20 text-[#D6AD55] text-[10px] font-bold uppercase tracking-wider mb-4 border border-[#D6AD55]/30">
-                      <Crown className="w-3.5 h-3.5" />
-                      <span>Exhibitor Advantage</span>
-                    </div>
-
                     <h3 className="font-serif text-xl font-bold text-white mb-2 leading-snug">
                       Join the Expert Stage as a Platinum Partner
                     </h3>

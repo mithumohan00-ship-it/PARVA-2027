@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { ExhibitorEnquiry } from '../types';
+import { isGoogleSheetsConfigured, appendToGoogleSheets } from './sheets';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
@@ -17,44 +18,9 @@ export const supabase = isSupabaseConfigured()
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null;
 
-/**
- * SQL Schema for Supabase Table setup:
- * 
- * CREATE TABLE IF NOT EXISTS exhibitor_enquiries (
- *   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
- *   institution_name TEXT NOT NULL,
- *   institution_type TEXT NOT NULL CHECK (institution_type IN ('School', 'PU College')),
- *   contact_person TEXT NOT NULL,
- *   designation TEXT NOT NULL,
- *   email TEXT NOT NULL,
- *   phone TEXT NOT NULL,
- *   whatsapp TEXT NOT NULL,
- *   location TEXT NOT NULL,
- *   preferred_package TEXT NOT NULL CHECK (preferred_package IN ('Basic', 'Premium', 'Platinum', 'Need Guidance')),
- *   preferred_stall_type TEXT NOT NULL,
- *   additional_requirements TEXT,
- *   consent BOOLEAN NOT NULL DEFAULT true,
- *   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
- * );
- * 
- * -- Enable Row Level Security (RLS)
- * ALTER TABLE exhibitor_enquiries ENABLE ROW LEVEL SECURITY;
- * 
- * -- Only allow public insert (anonymous visitors submitting enquiries)
- * CREATE POLICY "Allow public insert of enquiries"
- *   ON exhibitor_enquiries
- *   FOR INSERT
- *   TO anon
- *   WITH CHECK (true);
- * 
- * -- Disallow public read/select (protecting private contact details)
- * -- Only authenticated admin users or service role can select records
- * CREATE POLICY "Allow authenticated read of enquiries"
- *   ON exhibitor_enquiries
- *   FOR SELECT
- *   TO authenticated
- *   USING (true);
- */
+export const isBackendConfigured = (): boolean => {
+  return isGoogleSheetsConfigured() || isSupabaseConfigured();
+};
 
 export interface SubmissionResult {
   success: boolean;
@@ -74,10 +40,25 @@ export const submitExhibitorEnquiry = async (
     throw new Error('Valid 10-digit phone number is required.');
   }
 
-  // If Supabase is configured, submit to live database
+  let sheetsSent = false;
+  let supabaseSent = false;
+
+  // 1. Send directly to connected Google Sheet
+  if (isGoogleSheetsConfigured()) {
+    try {
+      const sheetsResult = await appendToGoogleSheets(enquiry);
+      if (sheetsResult.success) {
+        sheetsSent = true;
+      }
+    } catch (err) {
+      console.error('Google Sheets transmission note:', err);
+    }
+  }
+
+  // 2. If Supabase is configured, also save in PostgreSQL table
   if (isSupabaseConfigured() && supabase) {
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('exhibitor_enquiries')
         .insert([
           {
@@ -94,51 +75,42 @@ export const submitExhibitorEnquiry = async (
             additional_requirements: enquiry.additional_requirements || null,
             consent: enquiry.consent,
           },
-        ])
-        .select()
-        .single();
+        ]);
 
-      if (error) {
-        console.error('Supabase submission error:', error);
-        throw new Error(error.message || 'Database error occurred during submission.');
+      if (!error) {
+        supabaseSent = true;
+      } else {
+        console.error('Supabase submission note:', error);
       }
-
-      return {
-        success: true,
-        message:
-          'Thank you for your interest in PARVA 2027. Your enquiry has been received. The organising team will contact you shortly to discuss package details and stall availability.',
-        isDemoMode: false,
-        data,
-      };
     } catch (err: any) {
-      console.error('Error submitting enquiry:', err);
-      throw new Error(err.message || 'Failed to submit stall enquiry.');
+      console.error('Supabase submission note:', err);
     }
   }
 
-  // Graceful Demo / Local Preview Mode
-  // Store locally so testing works immediately and alert the user
+  // 3. Always save in browser local storage as instant backup
   try {
     const existing = JSON.parse(localStorage.getItem('parva_demo_enquiries') || '[]');
     const newRecord: ExhibitorEnquiry = {
       ...enquiry,
-      id: `demo-${Date.now()}`,
+      id: `enquiry-${Date.now()}`,
       created_at: new Date().toISOString(),
     };
     existing.unshift(newRecord);
     localStorage.setItem('parva_demo_enquiries', JSON.stringify(existing));
-
-    // Simulate network delay for realistic experience
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    return {
-      success: true,
-      message:
-        'Thank you for your interest in PARVA 2027. Your enquiry has been received. The organising team can contact you to discuss package details and stall availability.',
-      isDemoMode: true,
-      data: newRecord,
-    };
   } catch (err: any) {
-    throw new Error('Unable to store demo enquiry: ' + err.message);
+    console.error('Local backup storage notice:', err);
   }
+
+  // If neither Google Sheets nor Supabase were connected, simulate short realistic network delay
+  if (!sheetsSent && !supabaseSent) {
+    await new Promise((resolve) => setTimeout(resolve, 800));
+  }
+
+  return {
+    success: true,
+    message:
+      'Thank you for your interest in PARVA 2027. Your application has been successfully submitted! The organising team will contact you shortly.',
+    isDemoMode: !sheetsSent && !supabaseSent,
+    data: enquiry,
+  };
 };

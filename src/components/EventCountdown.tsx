@@ -89,11 +89,6 @@ export const EventCountdown: React.FC = () => {
               </p>
             </div>
           </div>
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55]">
-            <span className="w-2 h-2 rounded-full bg-[#D6AD55] animate-ping" />
-            <span>2nd Edition Launch</span>
-          </div>
         </div>
 
         {/* Display depending on status */}
@@ -176,12 +171,6 @@ export const EventCountdown: React.FC = () => {
             </div>
           </div>
         )}
-
-        {/* Bottom Banner */}
-        <div className="mt-5 pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
-          <span>Early-Bird Booking Advantage Ends: 15 November 2026</span>
-          <span className="text-[#D6AD55]">Stall Allotment on 20 December 2026</span>
-        </div>
       </div>
     </div>
   );

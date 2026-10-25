@@ -10,11 +10,10 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Sparkles,
   Info,
 } from 'lucide-react';
 import { PackageType, ExhibitorEnquiry } from '../types';
-import { submitExhibitorEnquiry, isSupabaseConfigured } from '../lib/supabase';
+import { submitExhibitorEnquiry } from '../lib/supabase';
 
 interface BookingFormProps {
   initialPackage?: PackageType;
@@ -152,8 +151,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     });
   };
 
-  const isConfigured = isSupabaseConfigured();
-
   return (
     <section id="booking" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Decorative background glow */}
@@ -162,11 +159,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Exhibitor Stall Booking</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Reserve Your Stall at{' '}
             <span className="text-gold-gradient font-normal">PARVA 2027.</span>
@@ -174,22 +166,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
             Connect with Bengaluru North families during the 2027–28 admission season.
-            Fill out the form below to receive official floor plans, package details, and early-bird terms.
+            Fill out the form below to receive official floor plans, package details, and participation terms.
           </p>
-
-          {/* Backend Status Notice */}
-          <div className="mt-4 inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-[#101A35] border border-white/10 text-slate-400">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                isConfigured ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
-              }`}
-            />
-            <span>
-              {isConfigured
-                ? 'Connected to Live Database (PostgreSQL / Supabase)'
-                : 'Demo Preview Mode (Enquiries saved securely to local preview store)'}
-            </span>
-          </div>
         </div>
 
         {/* Form Container */}
@@ -497,7 +475,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
                   <div className="flex items-center gap-2 text-xs text-slate-400">
                     <Info className="w-4 h-4 text-[#D6AD55] shrink-0" />
-                    <span>Early-bird price guaranteed for submissions before 15 November 2026.</span>
+                    <span>Priority stall allotment for registered educational institutions.</span>
                   </div>
 
                   <button

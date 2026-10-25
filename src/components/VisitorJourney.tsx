@@ -5,8 +5,6 @@ import {
   Store,
   Mic2,
   Gift,
-  Route,
-  Check,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -82,11 +80,6 @@ export const VisitorJourney: React.FC = () => {
     <section className="py-24 bg-[#0A1022]/85 relative backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Route className="w-3.5 h-3.5" />
-            <span>Interactive Passport System</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Every Visit{' '}
             <span className="text-gold-gradient font-normal">
@@ -132,11 +125,6 @@ export const VisitorJourney: React.FC = () => {
                     <p className="text-xs text-slate-300 font-light leading-relaxed">
                       {item.detail}
                     </p>
-                  </div>
-
-                  <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-center gap-1.5 text-[11px] text-[#D6AD55]">
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Engaged Footfall</span>
                   </div>
                 </div>
               );
@@ -227,11 +215,6 @@ export const VisitorJourney: React.FC = () => {
                     <p className="text-xs text-slate-300 font-light leading-relaxed px-2">
                       {item.detail}
                     </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-center gap-1.5 text-xs text-[#D6AD55]">
-                    <Check className="w-4 h-4" />
-                    <span>Verified Visitor Engagement</span>
                   </div>
                 </div>
               );

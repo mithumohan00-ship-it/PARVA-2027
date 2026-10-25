@@ -9,11 +9,6 @@ export const LocationSection: React.FC = () => {
     <section id="location" className="py-24 bg-[#101A35]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>Exhibition Venue</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Meet Us at{' '}
             <span className="text-gold-gradient font-normal">MEI Layout Ground.</span>
@@ -29,11 +24,6 @@ export const LocationSection: React.FC = () => {
           {/* Venue Info Panel (Left 5 Cols) */}
           <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between bg-gradient-to-b from-[#182547] to-[#101A35] border-b lg:border-b-0 lg:border-r border-white/10">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D6AD55]/20 text-[#D6AD55] text-xs font-bold uppercase tracking-wider mb-6 border border-[#D6AD55]/30">
-                <Navigation className="w-3 h-3" />
-                <span>Verified Exhibition Grounds</span>
-              </div>
-
               <h3 className="font-serif text-3xl font-bold text-white mb-4">
                 MEI Layout Ground
               </h3>

@@ -96,10 +96,6 @@ export const WhyParvaSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <span>Why Exhibit at PARVA</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Your Next Admission Opportunity{' '}
             <span className="text-gold-gradient font-normal">
@@ -233,11 +229,6 @@ export const WhyParvaSection: React.FC = () => {
                     <p className="text-xs text-slate-300 font-light leading-relaxed">
                       {feature.description}
                     </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>Exhibitor Advantage</span>
-                    <span className="text-[#D6AD55] font-semibold">PARVA 2027</span>
                   </div>
                 </div>
               );

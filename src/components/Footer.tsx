@@ -142,7 +142,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                   href="#booking"
                   className="inline-flex items-center gap-1.5 text-xs text-[#D6AD55] font-semibold hover:underline"
                 >
-                  <span>Early-Bird Booking Info →</span>
+                  <span>Exhibitor Booking Info →</span>
                 </a>
               </div>
             </div>

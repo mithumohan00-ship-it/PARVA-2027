@@ -1,5 +1,5 @@
 import React from 'react';
-import { School, GraduationCap, Building2, AlertTriangle, ShieldCheck, History } from 'lucide-react';
+import { School, GraduationCap, Building2, AlertTriangle, History } from 'lucide-react';
 
 export const EligibilitySection: React.FC = () => {
   return (
@@ -7,11 +7,6 @@ export const EligibilitySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Exhibitor Criteria</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             An Exclusive Platform for{' '}
             <span className="text-gold-gradient font-normal">Educational Institutions.</span>

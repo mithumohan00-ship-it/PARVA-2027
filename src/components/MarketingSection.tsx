@@ -6,7 +6,6 @@ import {
   Newspaper,
   Gift,
   Trophy,
-  Megaphone,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -94,11 +93,6 @@ export const MarketingSection: React.FC = () => {
     <section className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
-            <Megaphone className="w-3.5 h-3.5" />
-            <span>Planned Promotion Campaign</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             We Bring the Parents.{' '}
             <span className="text-gold-gradient font-normal">
@@ -139,11 +133,6 @@ export const MarketingSection: React.FC = () => {
                   <p className="text-sm text-slate-300 font-light leading-relaxed">
                     {pillar.description}
                   </p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
-                  <span>Planned Initiative</span>
-                  <span className="text-[#D6AD55]/80">Bengaluru North</span>
                 </div>
               </div>
             );
@@ -238,11 +227,6 @@ export const MarketingSection: React.FC = () => {
                     <p className="text-xs text-slate-300 font-light leading-relaxed">
                       {pillar.description}
                     </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>Planned Campaign</span>
-                    <span className="text-[#D6AD55] font-semibold">Bengaluru North</span>
                   </div>
                 </div>
               );

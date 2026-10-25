@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, Clock, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
+import { Calendar, MapPin, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface HeroSectionProps {
   onReserveClick: () => void;
@@ -38,13 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Subtle Animated Gold Ambient Light Beam */}
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-96 bg-gradient-to-b from-[#D6AD55]/15 via-[#D6AD55]/5 to-transparent blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Early-Bird Announcement Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#182547]/90 border border-[#D6AD55]/40 text-[#D6AD55] text-xs font-semibold tracking-wide uppercase shadow-sm mb-6 animate-pulse">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Early-Bird Booking Deadline: 15 November 2026</span>
-        </div>
-
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center pt-6 sm:pt-8">
         {/* Top Label */}
         <div className="flex items-center gap-2 mb-4">
           <div className="h-[1px] w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#D6AD55]" />
