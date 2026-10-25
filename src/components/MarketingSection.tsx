@@ -91,17 +91,17 @@ export const MarketingSection: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-[#031F51]/85 relative overflow-hidden backdrop-blur-[1px]">
+    <section className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
             <Megaphone className="w-3.5 h-3.5" />
             <span>Planned Promotion Campaign</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             We Bring the Parents.{' '}
-            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">
+            <span className="text-gold-gradient font-normal">
               You Win the Admissions.
             </span>
           </h2>
@@ -121,18 +121,18 @@ export const MarketingSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-[#121481]/90 border border-[#245DA9]/40 hover:border-[#1491C2]/70 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-cyan-glow group flex flex-col justify-between"
+                className="bg-[#101A35] border border-white/10 hover:border-[#D6AD55]/60 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-glow group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center mb-5 group-hover:border-[#1491C2] transition-colors">
-                    <Icon className="w-6 h-6 text-[#1491C2] group-hover:scale-110 transition-transform" />
+                  <div className="w-12 h-12 rounded-xl bg-[#182547] border border-[#D6AD55]/30 flex items-center justify-center mb-5 group-hover:border-[#D6AD55] transition-colors">
+                    <Icon className="w-6 h-6 text-[#D6AD55] group-hover:scale-110 transition-transform" />
                   </div>
 
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#1491C2] block mb-1">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] block mb-1">
                     {pillar.title}
                   </span>
 
-                  <h3 className="font-serif text-lg font-bold text-white mb-3">
+                  <h3 className="font-serif text-lg font-bold text-white mb-3 group-hover:text-[#D6AD55] transition-colors">
                     {pillar.headline}
                   </h3>
 
@@ -143,7 +143,7 @@ export const MarketingSection: React.FC = () => {
 
                 <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
                   <span>Planned Initiative</span>
-                  <span className="text-[#1491C2]/80">Bengaluru North</span>
+                  <span className="text-[#D6AD55]/80">Bengaluru North</span>
                 </div>
               </div>
             );
@@ -164,7 +164,6 @@ export const MarketingSection: React.FC = () => {
             {marketingPillars.map((pillar, idx) => {
               const Icon = pillar.icon;
 
-              // Calculate circular offset relative to activeSlide
               let offset = idx - activeSlide;
               if (offset < -Math.floor(total / 2)) {
                 offset += total;
@@ -176,7 +175,6 @@ export const MarketingSection: React.FC = () => {
               const isLeft = offset === -1;
               const isRight = offset === 1;
 
-              // Compute inline stacked transforms
               let transform = 'translateX(0) scale(0.8) rotate(0deg)';
               let zIndex = 10;
               let opacity = 0;
@@ -214,22 +212,22 @@ export const MarketingSection: React.FC = () => {
                   }}
                   className={`absolute inset-0 rounded-3xl p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer ${
                     isCenter
-                      ? 'bg-[#121481] border-2 border-[#1491C2] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7),0_0_25px_rgba(20,145,194,0.3)]'
-                      : 'bg-[#08255E] border border-[#245DA9]/60 shadow-lg'
+                      ? 'bg-[#131E3D] border-2 border-[#D6AD55] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7),0_0_25px_rgba(214,173,85,0.3)]'
+                      : 'bg-[#101A35] border border-[#D6AD55]/30 shadow-lg'
                   }`}
                 >
                   <div>
                     {/* Card Top Row */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-2xl bg-[#031F51] border border-[#245DA9]/60 flex items-center justify-center shadow-inner">
-                        <Icon className="w-6 h-6 text-[#1491C2]" />
+                      <div className="w-12 h-12 rounded-2xl bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center shadow-inner">
+                        <Icon className="w-6 h-6 text-[#D6AD55]" />
                       </div>
-                      <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-full bg-[#031F51] text-[#1491C2] border border-[#1491C2]/30">
+                      <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-full bg-[#182547] text-[#D6AD55] border border-[#D6AD55]/30">
                         0{idx + 1}
                       </span>
                     </div>
 
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#1491C2] block mb-1">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] block mb-1">
                       {pillar.title}
                     </span>
 
@@ -244,7 +242,7 @@ export const MarketingSection: React.FC = () => {
 
                   <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
                     <span>Planned Campaign</span>
-                    <span className="text-[#1491C2] font-semibold">Bengaluru North</span>
+                    <span className="text-[#D6AD55] font-semibold">Bengaluru North</span>
                   </div>
                 </div>
               );
@@ -257,10 +255,10 @@ export const MarketingSection: React.FC = () => {
             <button
               type="button"
               onClick={handlePrev}
-              className="w-11 h-11 rounded-full bg-[#121481] border border-[#245DA9]/60 hover:border-[#1491C2] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-cyan-glow"
+              className="w-11 h-11 rounded-full bg-[#182547] border border-[#D6AD55]/40 hover:border-[#D6AD55] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-gold-glow"
               aria-label="Previous initiative"
             >
-              <ChevronLeft className="w-5 h-5 text-[#1491C2]" />
+              <ChevronLeft className="w-5 h-5 text-[#D6AD55]" />
             </button>
 
             {/* Pagination Dots with Active Pill */}
@@ -272,8 +270,8 @@ export const MarketingSection: React.FC = () => {
                   onClick={() => setActiveSlide(dotIdx)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     activeSlide === dotIdx
-                      ? 'w-7 bg-[#1491C2] shadow-[0_0_10px_#1491C2]'
-                      : 'w-2 bg-[#245DA9]/50 hover:bg-[#1491C2]/50'
+                      ? 'w-7 bg-[#D6AD55] shadow-[0_0_10px_#D6AD55]'
+                      : 'w-2 bg-[#D6AD55]/30 hover:bg-[#D6AD55]/60'
                   }`}
                   aria-label={`Go to slide ${dotIdx + 1}`}
                 />
@@ -284,10 +282,10 @@ export const MarketingSection: React.FC = () => {
             <button
               type="button"
               onClick={handleNext}
-              className="w-11 h-11 rounded-full bg-[#121481] border border-[#245DA9]/60 hover:border-[#1491C2] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-cyan-glow"
+              className="w-11 h-11 rounded-full bg-[#182547] border border-[#D6AD55]/40 hover:border-[#D6AD55] flex items-center justify-center text-white active:scale-95 transition-all shadow-md hover:shadow-gold-glow"
               aria-label="Next initiative"
             >
-              <ChevronRight className="w-5 h-5 text-[#1491C2]" />
+              <ChevronRight className="w-5 h-5 text-[#D6AD55]" />
             </button>
           </div>
         </div>

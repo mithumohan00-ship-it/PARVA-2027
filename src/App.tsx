@@ -56,7 +56,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#031F51] text-slate-100 flex flex-col font-sans selection:bg-[#1491C2] selection:text-white relative">
+    <div className="min-h-screen bg-[#0A1022] text-slate-100 flex flex-col font-sans selection:bg-[#D6AD55] selection:text-[#101A35] relative">
       {/* 3D Y-Axis Center Rotating Logo (Constant Low Speed across entire page) */}
       <ScrollRotatingLogo />
 

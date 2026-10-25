@@ -76,8 +76,8 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#031F51]/95 backdrop-blur-md shadow-lg border-b border-[#1491C2]/25 py-3.5'
-            : 'bg-gradient-to-b from-[#031F51]/95 via-[#031F51]/70 to-transparent py-4 sm:py-5'
+            ? 'bg-[#101A35]/95 backdrop-blur-md shadow-lg border-b border-[#D6AD55]/25 py-3.5'
+            : 'bg-gradient-to-b from-[#101A35]/95 via-[#101A35]/70 to-transparent py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,7 +88,7 @@ export const Navbar: React.FC = () => {
               onClick={(e) => handleLinkClick(e, '#home')}
               className="flex items-center gap-3 group focus:outline-none shrink-0"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border-2 border-[#1491C2]/60 flex items-center justify-center shadow-[0_0_15px_rgba(20,145,194,0.3)] group-hover:border-[#1491C2] group-hover:shadow-[0_0_25px_rgba(20,145,194,0.5)] transition-all p-1 overflow-hidden">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border-2 border-[#D6AD55]/60 flex items-center justify-center shadow-[0_0_15px_rgba(214,173,85,0.25)] group-hover:border-[#D6AD55] group-hover:shadow-[0_0_25px_rgba(214,173,85,0.45)] transition-all p-1 overflow-hidden">
                 <img
                   src="/logo.png"
                   alt="PARVA Logo Shield"
@@ -98,10 +98,10 @@ export const Navbar: React.FC = () => {
 
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white group-hover:text-slate-100 transition-colors">
+                  <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white group-hover:text-[#D6AD55] transition-colors">
                     PARVA
                   </span>
-                  <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold bg-[#1491C2]/20 text-[#1491C2] border border-[#1491C2]/40 tracking-wider">
+                  <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold bg-[#182547] text-[#D6AD55] border border-[#D6AD55]/40 tracking-wider">
                     2027
                   </span>
                 </div>
@@ -111,7 +111,7 @@ export const Navbar: React.FC = () => {
               </div>
             </a>
 
-            {/* Desktop Navigation Links (with Scrollspy Active Highlights in Cyan) */}
+            {/* Desktop Navigation Links (with Scrollspy Active Highlights in Prestige Gold) */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
@@ -122,14 +122,14 @@ export const Navbar: React.FC = () => {
                     onClick={(e) => handleLinkClick(e, link.href)}
                     className={`text-xs xl:text-sm font-medium tracking-wide relative group py-1.5 transition-colors duration-200 ${
                       isActive
-                        ? 'text-[#1491C2] font-semibold'
-                        : 'text-slate-200 hover:text-[#1491C2]'
+                        ? 'text-[#D6AD55] font-semibold'
+                        : 'text-slate-200 hover:text-[#D6AD55]'
                     }`}
                   >
                     {link.name}
                     <span
-                      className={`absolute bottom-0 left-0 h-[2px] bg-[#1491C2] transition-all duration-300 ${
-                        isActive ? 'w-full shadow-[0_0_8px_#1491C2]' : 'w-0 group-hover:w-full'
+                      className={`absolute bottom-0 left-0 h-[2px] bg-[#D6AD55] transition-all duration-300 ${
+                        isActive ? 'w-full shadow-[0_0_8px_#D6AD55]' : 'w-0 group-hover:w-full'
                       }`}
                     />
                   </a>
@@ -146,7 +146,7 @@ export const Navbar: React.FC = () => {
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? (
-                  <X className="w-6 h-6 text-[#1491C2]" />
+                  <X className="w-6 h-6 text-[#D6AD55]" />
                 ) : (
                   <Menu className="w-6 h-6 text-slate-200" />
                 )}
@@ -166,12 +166,12 @@ export const Navbar: React.FC = () => {
           />
 
           {/* Drawer Panel */}
-          <div className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-[#031F51] border-l-2 border-[#1491C2]/40 p-6 flex flex-col justify-between shadow-2xl z-[70] overflow-y-auto">
+          <div className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-[#101A35] border-l-2 border-[#D6AD55]/40 p-6 flex flex-col justify-between shadow-2xl z-[70] overflow-y-auto">
             <div>
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-5 border-b border-white/10">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-[#1491C2] flex items-center justify-center p-1 shadow-sm">
+                  <div className="w-9 h-9 rounded-lg bg-white border border-[#D6AD55] flex items-center justify-center p-1 shadow-sm">
                     <img
                       src="/logo.png"
                       alt="PARVA Logo"
@@ -207,12 +207,12 @@ export const Navbar: React.FC = () => {
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={`flex items-center justify-between px-3 py-3 rounded-xl text-sm font-medium transition-all ${
                         isActive
-                          ? 'bg-[#121481] text-[#1491C2] border-l-4 border-[#1491C2] font-semibold'
+                          ? 'bg-[#182547] text-[#D6AD55] border-l-4 border-[#D6AD55] font-semibold'
                           : 'text-slate-200 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       <span>{link.name}</span>
-                      <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#1491C2]' : 'text-slate-500'}`} />
+                      <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#D6AD55]' : 'text-slate-500'}`} />
                     </a>
                   );
                 })}
@@ -222,7 +222,7 @@ export const Navbar: React.FC = () => {
             {/* Drawer Bottom Details */}
             <div className="pt-6 border-t border-white/10 space-y-3">
               <div className="flex items-center gap-2 text-xs text-slate-300">
-                <Calendar className="w-4 h-4 text-[#1491C2]" />
+                <Calendar className="w-4 h-4 text-[#D6AD55]" />
                 <span>9–10 January 2027 · MEI Layout Ground</span>
               </div>
             </div>

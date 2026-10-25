@@ -155,21 +155,21 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   const isConfigured = isSupabaseConfigured();
 
   return (
-    <section id="booking" className="py-24 bg-[#031F51]/85 relative overflow-hidden backdrop-blur-[1px]">
+    <section id="booking" className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#1491C2]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#D6AD55]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Exhibitor Stall Booking</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             Reserve Your Stall at{' '}
-            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">PARVA 2027.</span>
+            <span className="text-gold-gradient font-normal">PARVA 2027.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
@@ -178,10 +178,10 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           </p>
 
           {/* Backend Status Notice */}
-          <div className="mt-4 inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-[#121481] border border-[#245DA9]/40 text-slate-400">
+          <div className="mt-4 inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-[#101A35] border border-white/10 text-slate-400">
             <span
               className={`w-2 h-2 rounded-full ${
-                isConfigured ? 'bg-emerald-400 animate-pulse' : 'bg-[#1491C2]'
+                isConfigured ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
               }`}
             />
             <span>
@@ -193,11 +193,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         </div>
 
         {/* Form Container */}
-        <div className="bg-[#031F51] border-2 border-[#245DA9]/50 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl relative">
+        <div className="bg-[#101A35] border-2 border-[#D6AD55]/40 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl relative">
           {successResult ? (
             /* Success Feedback State */
             <div className="py-12 text-center max-w-xl mx-auto animate-fadeIn">
-              <div className="w-20 h-20 rounded-full bg-[#121481] border-2 border-[#1491C2] text-[#1491C2] flex items-center justify-center mx-auto mb-6 shadow-cyan-glow">
+              <div className="w-20 h-20 rounded-full bg-[#182547] border-2 border-[#D6AD55] text-[#D6AD55] flex items-center justify-center mx-auto mb-6 shadow-gold-glow">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
 
@@ -205,14 +205,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 Enquiry Successfully Received
               </h3>
 
-              <div className="p-6 rounded-2xl bg-[#121481] border border-[#245DA9]/40 text-slate-200 text-sm sm:text-base leading-relaxed mb-6 font-light">
+              <div className="p-6 rounded-2xl bg-[#182547] border border-[#D6AD55]/30 text-slate-200 text-sm sm:text-base leading-relaxed mb-6 font-light">
                 {successResult.message}
               </div>
 
               {successResult.isDemo && (
-                <div className="p-4 rounded-xl bg-[#245DA9]/20 border border-[#1491C2]/30 text-cyan-200 text-xs mb-8 text-left">
+                <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs mb-8 text-left">
                   <div className="flex items-start gap-2.5">
-                    <Info className="w-4 h-4 shrink-0 mt-0.5 text-[#1491C2]" />
+                    <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
                     <div>
                       <span className="font-semibold block mb-0.5">Demo Mode Notice:</span>
                       Your enquiry has been stored in browser local storage. When you configure your Supabase URL & Anon Key in the environment file, enquiries will automatically write to your production PostgreSQL table.
@@ -223,7 +223,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
               <button
                 onClick={handleReset}
-                className="px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#1491C2] via-[#245DA9] to-[#132CA9] text-white hover:brightness-110 active:scale-95 transition-all shadow-cyan-glow"
+                className="px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] text-[#101A35] hover:brightness-105 active:scale-95 transition-all shadow-md"
               >
                 Submit Another Enquiry
               </button>
@@ -253,7 +253,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
               {/* Section 1: Institution Details */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#1491C2] mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] mb-4 flex items-center gap-2">
                   <Building className="w-4 h-4" />
                   <span>1. Institutional Details</span>
                 </h3>
@@ -262,7 +262,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   {/* Institution Name */}
                   <div className="md:col-span-2">
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Institution Name <span className="text-[#1491C2]">*</span>
+                      Institution Name <span className="text-[#D6AD55]">*</span>
                     </label>
                     <input
                       type="text"
@@ -271,20 +271,20 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                       placeholder="e.g. Greenfield Public School / National PU College"
                       value={formData.institution_name}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     />
                   </div>
 
                   {/* Institution Type */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Institution Type <span className="text-[#1491C2]">*</span>
+                      Institution Type <span className="text-[#D6AD55]">*</span>
                     </label>
                     <select
                       name="institution_type"
                       value={formData.institution_type}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     >
                       <option value="School">School (CBSE / ICSE / State / IB)</option>
                       <option value="PU College">PU College (Science / Commerce / Arts)</option>
@@ -294,7 +294,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   {/* Institution Location */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Campus Location / Area <span className="text-[#1491C2]">*</span>
+                      Campus Location / Area <span className="text-[#D6AD55]">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -304,7 +304,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                         placeholder="e.g. Bagalagunte, Jalahalli, Hesaraghatta Rd"
                         value={formData.location}
                         onChange={handleChange}
-                        className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors pl-10"
+                        className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors pl-10"
                       />
                       <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     </div>
@@ -314,7 +314,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
               {/* Section 2: Contact Person Details */}
               <div className="pt-6 border-t border-white/10">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#1491C2] mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] mb-4 flex items-center gap-2">
                   <User className="w-4 h-4" />
                   <span>2. Contact Person Information</span>
                 </h3>
@@ -323,7 +323,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   {/* Contact Person Name */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Contact Person Name <span className="text-[#1491C2]">*</span>
+                      Contact Person Name <span className="text-[#D6AD55]">*</span>
                     </label>
                     <input
                       type="text"
@@ -332,14 +332,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                       placeholder="e.g. Dr. Raghavendra Rao"
                       value={formData.contact_person}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     />
                   </div>
 
                   {/* Designation */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Designation <span className="text-[#1491C2]">*</span>
+                      Designation <span className="text-[#D6AD55]">*</span>
                     </label>
                     <input
                       type="text"
@@ -348,14 +348,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                       placeholder="e.g. Principal / Director / Admissions Head"
                       value={formData.designation}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     />
                   </div>
 
                   {/* Official Email */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Official Email Address <span className="text-[#1491C2]">*</span>
+                      Official Email Address <span className="text-[#D6AD55]">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -365,7 +365,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                         placeholder="admissions@school.edu.in"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors pl-10"
+                        className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors pl-10"
                       />
                       <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     </div>
@@ -374,7 +374,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   {/* Phone Number */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Phone Number <span className="text-[#1491C2]">*</span>
+                      Phone Number <span className="text-[#D6AD55]">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -384,7 +384,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                         placeholder="e.g. 9876543210"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors pl-10"
+                        className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors pl-10"
                       />
                       <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     </div>
@@ -400,7 +400,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                         <button
                           type="button"
                           onClick={handleCopyPhoneToWhatsapp}
-                          className="text-[11px] text-[#1491C2] hover:underline"
+                          className="text-[11px] text-[#D6AD55] hover:underline"
                         >
                           Same as Phone
                         </button>
@@ -412,7 +412,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                       placeholder="e.g. 9876543210"
                       value={formData.whatsapp}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     />
                   </div>
                 </div>
@@ -420,7 +420,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
               {/* Section 3: Package & Stall Preferences */}
               <div className="pt-6 border-t border-white/10">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#1491C2] mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] mb-4 flex items-center gap-2">
                   <Package className="w-4 h-4" />
                   <span>3. Package & Stall Selection</span>
                 </h3>
@@ -429,13 +429,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   {/* Preferred Package */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Preferred Package <span className="text-[#1491C2]">*</span>
+                      Preferred Package <span className="text-[#D6AD55]">*</span>
                     </label>
                     <select
                       name="preferred_package"
                       value={formData.preferred_package}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     >
                       <option value="Basic">Basic Package (&ldquo;Be Seen&rdquo; - Standard Stall)</option>
                       <option value="Premium">Premium Package (&ldquo;Stand Out&rdquo; - Corner/Front + Stage)</option>
@@ -447,13 +447,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   {/* Preferred Stall Type */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                      Preferred Stall Layout <span className="text-[#1491C2]">*</span>
+                      Preferred Stall Layout <span className="text-[#D6AD55]">*</span>
                     </label>
                     <select
                       name="preferred_stall_type"
                       value={formData.preferred_stall_type}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     >
                       <option value="Standard Octanorm Booth">Standard Octanorm Shell Scheme</option>
                       <option value="Corner Stall (2-Side Open)">Corner Stall (2-Side Open)</option>
@@ -473,7 +473,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                       placeholder="e.g. Student performance interest, specific electrical load requirements, multi-stall request..."
                       value={formData.additional_requirements}
                       onChange={handleChange}
-                      className="w-full bg-[#121481] border border-[#245DA9]/40 rounded-xl p-4 text-sm text-white placeholder-slate-400 focus:border-[#1491C2] focus:ring-1 focus:ring-[#1491C2] transition-colors"
+                      className="w-full bg-[#182547] border border-white/10 rounded-xl p-4 text-sm text-white placeholder-slate-400 focus:border-[#D6AD55] focus:ring-1 focus:ring-[#D6AD55] transition-colors"
                     />
                   </div>
                 </div>
@@ -487,7 +487,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                     name="consent"
                     checked={formData.consent}
                     onChange={handleChange}
-                    className="mt-1 w-4 h-4 rounded text-[#1491C2] focus:ring-[#1491C2] bg-[#121481] border-[#245DA9]/50"
+                    className="mt-1 w-4 h-4 rounded text-[#D6AD55] focus:ring-[#D6AD55] bg-[#182547] border-white/20"
                   />
                   <span className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
                     I agree to be contacted by the PARVA organising team regarding exhibitor participation, stall allotment, and promotional package details.
@@ -496,14 +496,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
                   <div className="flex items-center gap-2 text-xs text-slate-400">
-                    <Info className="w-4 h-4 text-[#1491C2] shrink-0" />
+                    <Info className="w-4 h-4 text-[#D6AD55] shrink-0" />
                     <span>Early-bird price guaranteed for submissions before 15 November 2026.</span>
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#1491C2] via-[#245DA9] to-[#132CA9] rounded-xl shadow-cyan-glow hover:brightness-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 text-xs font-bold uppercase tracking-wider text-[#101A35] bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] rounded-xl shadow-gold-glow hover:brightness-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                   >
                     {loading ? (
                       <>

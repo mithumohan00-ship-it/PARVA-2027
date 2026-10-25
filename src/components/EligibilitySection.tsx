@@ -3,18 +3,18 @@ import { School, GraduationCap, Building2, AlertTriangle, ShieldCheck, History }
 
 export const EligibilitySection: React.FC = () => {
   return (
-    <section className="py-24 bg-[#031F51]/85 relative overflow-hidden backdrop-blur-[1px]">
+    <section className="py-24 bg-[#0A1022]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121481] border border-[#1491C2]/40 text-[#1491C2] text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182547] border border-[#D6AD55]/30 text-[#D6AD55] text-xs font-semibold tracking-wider uppercase mb-4">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Exhibitor Criteria</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
             An Exclusive Platform for{' '}
-            <span className="bg-gradient-to-r from-white via-cyan-100 to-[#1491C2] bg-clip-text text-transparent font-normal">Educational Institutions.</span>
+            <span className="text-gold-gradient font-normal">Educational Institutions.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
@@ -26,9 +26,9 @@ export const EligibilitySection: React.FC = () => {
         {/* Three Eligible Categories Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {/* Schools */}
-          <div className="bg-[#121481]/90 border border-[#245DA9]/40 rounded-2xl p-8 text-center hover:border-[#1491C2] hover:shadow-cyan-glow transition-all group">
-            <div className="w-16 h-16 rounded-2xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
-              <School className="w-8 h-8 text-[#1491C2]" />
+          <div className="bg-[#101A35] border border-[#D6AD55]/30 rounded-2xl p-8 text-center hover:border-[#D6AD55] transition-all group">
+            <div className="w-16 h-16 rounded-2xl bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
+              <School className="w-8 h-8 text-[#D6AD55]" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-white mb-3">
               Schools
@@ -40,9 +40,9 @@ export const EligibilitySection: React.FC = () => {
           </div>
 
           {/* PU Colleges */}
-          <div className="bg-[#121481]/90 border border-[#245DA9]/40 rounded-2xl p-8 text-center hover:border-[#1491C2] hover:shadow-cyan-glow transition-all group">
-            <div className="w-16 h-16 rounded-2xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
-              <GraduationCap className="w-8 h-8 text-[#1491C2]" />
+          <div className="bg-[#101A35] border border-[#D6AD55]/30 rounded-2xl p-8 text-center hover:border-[#D6AD55] transition-all group">
+            <div className="w-16 h-16 rounded-2xl bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
+              <GraduationCap className="w-8 h-8 text-[#D6AD55]" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-white mb-3">
               PU Colleges
@@ -54,9 +54,9 @@ export const EligibilitySection: React.FC = () => {
           </div>
 
           {/* Educational Institutions */}
-          <div className="bg-[#121481]/90 border border-[#245DA9]/40 rounded-2xl p-8 text-center hover:border-[#1491C2] hover:shadow-cyan-glow transition-all group">
-            <div className="w-16 h-16 rounded-2xl bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
-              <Building2 className="w-8 h-8 text-[#1491C2]" />
+          <div className="bg-[#101A35] border border-[#D6AD55]/30 rounded-2xl p-8 text-center hover:border-[#D6AD55] transition-all group">
+            <div className="w-16 h-16 rounded-2xl bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
+              <Building2 className="w-8 h-8 text-[#D6AD55]" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-white mb-3">
               Educational Institutions
@@ -69,10 +69,10 @@ export const EligibilitySection: React.FC = () => {
         </div>
 
         {/* Strict Exclusion Notice */}
-        <div className="bg-[#121481]/90 border-l-4 border-[#1491C2] rounded-xl p-6 sm:p-7 max-w-4xl mx-auto mb-16 shadow-lg">
+        <div className="bg-[#182547]/90 border-l-4 border-[#D6AD55] rounded-xl p-6 sm:p-7 max-w-4xl mx-auto mb-16 shadow-lg">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg bg-[#031F51] border border-[#245DA9]/50 flex items-center justify-center shrink-0 mt-0.5">
-              <AlertTriangle className="w-5 h-5 text-[#1491C2]" />
+            <div className="w-10 h-10 rounded-lg bg-[#101A35] border border-[#D6AD55]/40 flex items-center justify-center shrink-0 mt-0.5">
+              <AlertTriangle className="w-5 h-5 text-[#D6AD55]" />
             </div>
             <div>
               <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-1">
@@ -82,21 +82,21 @@ export const EligibilitySection: React.FC = () => {
                 PARVA exhibitor participation is restricted to{' '}
                 <strong className="text-white font-semibold">schools and PU colleges</strong>.
                 Coaching centres, tuition classes, robotics companies, and ed-tech companies
-                are <span className="text-[#1491C2] font-semibold underline underline-offset-4">not eligible</span> to book exhibition stalls. This ensures families encounter a distraction-free environment dedicated purely to institutional choices.
+                are <span className="text-[#D6AD55] font-semibold underline underline-offset-4">not eligible</span> to book exhibition stalls. This ensures families encounter a distraction-free environment dedicated purely to institutional choices.
               </p>
             </div>
           </div>
         </div>
 
         {/* Secondary Section: Organised by Educators */}
-        <div className="bg-[#031F51] border border-[#245DA9]/50 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
+        <div className="bg-[#101A35] border border-[#D6AD55]/30 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
           <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-            <div className="w-20 h-20 rounded-2xl bg-[#121481] border-2 border-[#1491C2] flex items-center justify-center shrink-0 shadow-cyan-glow">
-              <History className="w-10 h-10 text-[#1491C2]" />
+            <div className="w-20 h-20 rounded-2xl bg-[#182547] border-2 border-[#D6AD55] flex items-center justify-center shrink-0 shadow-gold-sm">
+              <History className="w-10 h-10 text-[#D6AD55]" />
             </div>
 
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1491C2] mb-2">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D6AD55] mb-2">
                 <span>Legacy & Commitment</span>
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">

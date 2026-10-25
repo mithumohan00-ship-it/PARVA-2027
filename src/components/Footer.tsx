@@ -30,20 +30,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
   };
 
   return (
-    <footer className="bg-[#031F51] border-t border-[#245DA9]/40 pt-16 pb-12 text-slate-300 relative">
+    <footer className="bg-[#0A1022] border-t border-[#D6AD55]/30 pt-16 pb-12 text-slate-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Column 1: Brand & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-white/95 border border-[#1491C2] flex items-center justify-center p-1 overflow-hidden">
+              <div className="w-10 h-10 rounded-lg bg-white/95 border border-[#D6AD55] flex items-center justify-center p-1 overflow-hidden">
                 <img src="/logo.png" alt="PARVA Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <span className="font-serif text-2xl font-bold text-white tracking-wider">
                   PARVA 2027
                 </span>
-                <span className="block text-[11px] uppercase tracking-wider text-[#1491C2]">
+                <span className="block text-[11px] uppercase tracking-wider text-[#D6AD55]">
                   2nd Edition
                 </span>
               </div>
@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
 
           {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#1491C2] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                   <a
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-slate-300 hover:text-[#1491C2] transition-colors"
+                    className="text-slate-300 hover:text-[#D6AD55] transition-colors"
                   >
                     {link.name}
                   </a>
@@ -84,12 +84,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
 
           {/* Column 3: Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#1491C2] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] mb-4">
               Contact Organiser
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#1491C2] shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-[#D6AD55] shrink-0 mt-0.5" />
                 <div className="flex flex-col space-y-1 font-mono text-xs">
                   <a href="tel:9632645625" className="hover:text-white transition-colors">
                     +91 96326 45625
@@ -104,10 +104,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               </div>
 
               <div className="flex items-start gap-2.5 pt-2">
-                <Mail className="w-4 h-4 text-[#1491C2] shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 text-[#D6AD55] shrink-0 mt-0.5" />
                 <a
                   href="mailto:bhadrisacademy.expo2026@gmail.com"
-                  className="font-mono text-xs text-slate-300 hover:text-[#1491C2] transition-colors break-all"
+                  className="font-mono text-xs text-slate-300 hover:text-[#D6AD55] transition-colors break-all"
                 >
                   bhadrisacademy.expo2026@gmail.com
                 </a>
@@ -117,12 +117,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
 
           {/* Column 4: Event Coordinates */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#1491C2] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#D6AD55] mb-4">
               Event Details
             </h4>
             <div className="space-y-3 text-sm font-light">
               <div className="flex items-start gap-2.5">
-                <Calendar className="w-4 h-4 text-[#1491C2] shrink-0 mt-0.5" />
+                <Calendar className="w-4 h-4 text-[#D6AD55] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-white font-medium block">9–10 January 2027</span>
                   <span className="text-xs text-slate-400">11:00 AM – 8:00 PM Both Days</span>
@@ -130,7 +130,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#1491C2] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#D6AD55] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-white font-medium block">MEI Layout Ground</span>
                   <span className="text-xs text-slate-400">Bagalagunte, Bengaluru North</span>
@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               <div className="pt-2">
                 <a
                   href="#booking"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#1491C2] font-semibold hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#D6AD55] font-semibold hover:underline"
                 >
                   <span>Early-Bird Booking Info →</span>
                 </a>
@@ -158,19 +158,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
           <div className="flex items-center gap-6">
             <button
               onClick={onOpenPrivacy}
-              className="hover:text-[#1491C2] transition-colors"
+              className="hover:text-[#D6AD55] transition-colors"
             >
               Privacy Policy
             </button>
             <button
               onClick={onOpenTerms}
-              className="hover:text-[#1491C2] transition-colors"
+              className="hover:text-[#D6AD55] transition-colors"
             >
               Terms of Participation
             </button>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-lg bg-[#121481] text-slate-300 hover:text-white hover:bg-[#245DA9] transition-colors"
+              className="p-2 rounded-lg bg-[#182547] text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-4 h-4" />

@@ -19,14 +19,14 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
       />
 
       {/* Modal Dialog */}
-      <div className="relative bg-[#031F51] border-2 border-[#1491C2]/60 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-cyan-glow z-10 text-slate-200">
+      <div className="relative bg-[#101A35] border-2 border-[#D6AD55]/40 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 shadow-2xl z-10 text-slate-200">
         <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-[#121481] border border-[#245DA9]/50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-[#182547] border border-[#D6AD55]/40 flex items-center justify-center">
               {type === 'privacy' ? (
-                <ShieldCheck className="w-5 h-5 text-[#1491C2]" />
+                <ShieldCheck className="w-5 h-5 text-[#D6AD55]" />
               ) : (
-                <FileText className="w-5 h-5 text-[#1491C2]" />
+                <FileText className="w-5 h-5 text-[#D6AD55]" />
               )}
             </div>
             <div>
@@ -72,7 +72,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
               regarding data handling, please contact{' '}
               <a
                 href="mailto:bhadrisacademy.expo2026@gmail.com"
-                className="text-[#1491C2] underline"
+                className="text-[#D6AD55] underline"
               >
                 bhadrisacademy.expo2026@gmail.com
               </a>.
@@ -108,7 +108,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
         <div className="mt-8 pt-4 border-t border-white/10 flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-lg bg-[#121481] hover:bg-[#245DA9] text-white text-xs font-semibold transition-colors border border-[#245DA9]/50"
+            className="px-6 py-2 rounded-lg bg-[#182547] text-white text-xs font-semibold hover:bg-white/10 transition-colors border border-white/10"
           >
             Close
           </button>
