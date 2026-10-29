@@ -85,7 +85,7 @@ export const EventCountdown: React.FC = () => {
                 The Countdown to PARVA 2027
               </h2>
               <p className="text-xs text-slate-400">
-                Target: 9 January 2027 · 11:00 AM IST · MEI Layout Ground
+                Target: 9 January 2027 · 11:00 AM IST · Venue: To Be Updated
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export const EventCountdown: React.FC = () => {
                   PARVA 2027 IS LIVE NOW!
                 </h3>
                 <p className="text-sm text-slate-300">
-                  Join us at MEI Layout Ground, Bagalagunte. Expo timings: 11:00 AM – 8:00 PM.
+                  Join us at PARVA 2027. Expo timings: 11:00 AM – 8:00 PM. Venue to be updated.
                 </p>
               </div>
             </div>

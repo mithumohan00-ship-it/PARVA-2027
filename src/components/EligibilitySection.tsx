@@ -99,8 +99,8 @@ export const EligibilitySection: React.FC = () => {
               </h3>
               <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
                 PARVA is conceived and managed by educators who work closely with Bengaluru North
-                families every single day. The successful 1st edition was held at MEI Layout
-                Ground in January 2026. This second edition in 2027 expands the platform to welcome
+                families every single day. The successful 1st edition was held in Bengaluru North
+                in January 2026. This second edition in 2027 expands the platform to welcome
                 more than 60 schools and PU colleges across the region.
               </p>
             </div>

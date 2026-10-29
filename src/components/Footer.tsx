@@ -132,8 +132,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#D6AD55] shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-white font-medium block">MEI Layout Ground</span>
-                  <span className="text-xs text-slate-400">Bagalagunte, Bengaluru North</span>
+                  <span className="text-white font-medium block">Venue: To Be Updated</span>
+                  <span className="text-xs text-slate-400">Bengaluru North, Karnataka</span>
                 </div>
               </div>
 

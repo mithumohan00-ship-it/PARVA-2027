@@ -3,19 +3,19 @@ import { MapPin, Navigation, Calendar, Clock, ExternalLink, Bus, Car } from 'luc
 
 export const LocationSection: React.FC = () => {
   const googleMapsDirectionsUrl =
-    'https://www.google.com/maps/search/?api=1&query=MEI+Layout+Ground+Bagalagunte+Bengaluru';
+    'https://www.google.com/maps/search/?api=1&query=Bengaluru+North+Karnataka';
 
   return (
     <section id="location" className="py-24 bg-[#101A35]/85 relative overflow-hidden backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
-            Meet Us at{' '}
-            <span className="text-gold-gradient font-normal">MEI Layout Ground.</span>
+            Meet Us in{' '}
+            <span className="text-gold-gradient font-normal">Bengaluru North.</span>
           </h2>
 
           <p className="text-base text-slate-300 font-light max-w-2xl mx-auto">
-            Conveniently situated in the educational hub of Bagalagunte, easily accessible from Hesaraghatta Main Road, Tumkur Road, and Jalahalli.
+            A prime, accessible venue in Bengaluru North will be announced shortly. Convenient access, ample parking, and full transit connectivity guaranteed.
           </p>
         </div>
 
@@ -25,15 +25,15 @@ export const LocationSection: React.FC = () => {
           <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between bg-gradient-to-b from-[#182547] to-[#101A35] border-b lg:border-b-0 lg:border-r border-white/10">
             <div>
               <h3 className="font-serif text-3xl font-bold text-white mb-4">
-                MEI Layout Ground
+                Venue: To Be Updated
               </h3>
 
               <div className="space-y-4 mb-8 text-sm text-slate-300 font-light">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[#D6AD55] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-white block">Venue Address</span>
-                    <span>MEI Layout Ground, Bagalagunte, Bengaluru North, Karnataka, India</span>
+                    <span className="font-semibold text-white block">Venue Location</span>
+                    <span>Prime Strategic Location, Bengaluru North, Karnataka (Exact Venue To Be Announced Soon)</span>
                   </div>
                 </div>
 
@@ -74,7 +74,7 @@ export const LocationSection: React.FC = () => {
               className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#F3DF9A] via-[#D6AD55] to-[#B88E38] text-[#101A35] hover:brightness-105 active:scale-95 shadow-md transition-all"
             >
               <Navigation className="w-4 h-4" />
-              <span>Get Directions in Google Maps</span>
+              <span>Explore Bengaluru North in Maps</span>
               <ExternalLink className="w-3.5 h-3.5 ml-1" />
             </a>
           </div>
@@ -82,8 +82,8 @@ export const LocationSection: React.FC = () => {
           {/* Interactive Map Embed (Right 7 Cols) */}
           <div className="lg:col-span-7 h-96 sm:h-[480px] lg:h-auto min-h-[380px] relative bg-[#101A35]">
             <iframe
-              title="MEI Layout Ground Map Location"
-              src="https://maps.google.com/maps?q=MEI+Layout+Ground+Bagalagunte+Bengaluru&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title="Bengaluru North Location Map"
+              src="https://maps.google.com/maps?q=Bengaluru+North+Karnataka&t=&z=12&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0 filter contrast-105"
               loading="lazy"
               allowFullScreen
@@ -92,7 +92,7 @@ export const LocationSection: React.FC = () => {
             <div className="absolute top-4 left-4 z-10 bg-[#101A35]/95 backdrop-blur-md border border-[#D6AD55]/40 py-2 px-3.5 rounded-lg shadow-lg flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#D6AD55] animate-ping" />
               <span className="text-xs font-semibold text-white">
-                MEI Layout Ground · Bagalagunte
+                Venue Location · To Be Announced
               </span>
             </div>
           </div>

@@ -30,7 +30,7 @@ export const BookingTimeline: React.FC = () => {
     {
       date: '8 Jan 2027',
       title: 'Stall Setup',
-      description: 'Exhibitor access to MEI Ground for branding installation and technical setup.',
+      description: 'Exhibitor access to the venue grounds for branding installation and technical setup.',
       highlight: false,
     },
     {

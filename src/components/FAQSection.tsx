@@ -19,7 +19,7 @@ export const FAQSection: React.FC = () => {
     {
       question: 'Where will the event take place?',
       answer:
-        'MEI Layout Ground, Bagalagunte, Bengaluru North.',
+        'Bengaluru North (Venue to be updated shortly).',
     },
     {
       question: 'Who can book an exhibitor stall?',

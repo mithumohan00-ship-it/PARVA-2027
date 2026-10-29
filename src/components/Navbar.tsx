@@ -223,7 +223,7 @@ export const Navbar: React.FC = () => {
             <div className="pt-6 border-t border-white/10 space-y-3">
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Calendar className="w-4 h-4 text-[#D6AD55]" />
-                <span>9–10 January 2027 · MEI Layout Ground</span>
+                <span>9–10 January 2027 · Venue: To Be Updated</span>
               </div>
             </div>
           </div>

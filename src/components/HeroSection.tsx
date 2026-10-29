@@ -98,9 +98,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 Venue
               </span>
               <span className="text-sm font-bold text-white tracking-wide">
-                MEI Layout Ground
+                To Be Updated
               </span>
-              <span className="block text-xs text-slate-400">Bagalagunte, Bengaluru</span>
+              <span className="block text-xs text-slate-400">Bengaluru North</span>
             </div>
           </div>
 

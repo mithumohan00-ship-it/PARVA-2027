@@ -94,7 +94,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
             </p>
             <p>
               <strong className="text-white font-medium">3. Setup & Timings:</strong> Stall setup
-              commences on 8 January 2027 at MEI Layout Ground. Expo gates are open to the public
+              commences on 8 January 2027 at the official venue grounds (to be updated). Expo gates are open to the public
               from 11:00 AM to 8:00 PM on 9 & 10 January 2027.
             </p>
             <p>
